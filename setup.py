@@ -20,7 +20,7 @@ setup(name='gs.groups',
     url='http://groupserver.org',
     license='ZPL',
     packages=find_packages(exclude=['ez_setup']),
-    namespace_packages=['gs', 'gs.groups'],
+    namespace_packages=['gs'],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
