@@ -11,4 +11,12 @@
     permission="zope2.Public"
     factory=".groupsInfo.GSGroupsInfo"/>
 
+  <browser:page 
+    for="gs.groups.interfaces.IGSGroupsFolder"
+    name="index.html"
+    class="gs.groups.page.GroupsPage"
+    template="browser/templates/homepage.pt"
+    permission="zope2.View"/>
+
+
 </configure>

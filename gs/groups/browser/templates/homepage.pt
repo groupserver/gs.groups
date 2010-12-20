@@ -1,0 +1,99 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  metal:use-macro="context/@@groupserver_site_home_layout/page">
+  <head>
+    <title metal:fill-slot="title">
+      Groups Home <span tal:replace="view/siteInfo/name"/>
+   </title>
+    <!--TODO: Metadata-->
+  </head>
+  <body>
+    <tal:block metal:fill-slot="body"
+               tal:define="mg view/member_groups;
+                           groupCount python:len(mg)">
+      <h1>Groups Home</h1>
+      <tal:block
+      tal:condition="python:not user.has_role('Authenticated')"><a
+        href="/login.html?came_from=/groups">Log in</a> to see your groups.</tal:block>
+    <tal:block
+      tal:condition="python:'DivisionAdmin' in user.getRolesInContext(view.siteInfo.siteObj)">
+      As a site administrator you can
+      <a href="/admindivision/start_a_group/">Start
+        a group.</a>
+    </tal:block>
+      <h2 tal:condition="python:user.has_role('Authenticated') and mg">Your Group<tal:block tal:condition="python:groupCount&gt;1">s</tal:block></h2>
+        <dl>
+            <tal:block tal:repeat="group mg"> 
+        		<dt tal:define="c group/group_members_info/fullMemberCount;
+        						postsExist group/group_stats/postsExist;
+        		                min group/group_stats/minPerDay;
+        		                max group/group_stats/maxPerDay;
+    							plural python:c&gt;1 or c == 0;">
+        			<a tal:attributes="href group/relative_url" tal:content="group/name"/>
+        			(<span tal:replace="group/group_type"/> group with
+        			  <tal:block tal:condition="c"><span tal:replace="c"/></tal:block><tal:block tal:condition="not:c">no</tal:block> member<span tal:condition="plural" tal:replace="string:s"/>,
+        			  <tal:block tal:condition="postsExist"><span tal:replace="min"/> to <span tal:replace="max"/> posts per day</tal:block><tal:block tal:condition="not:postsExist">no posts yet</tal:block>)
+        		</dt>
+        		<dd tal:content="group/description"/>
+        		<dd>
+	                You may <a tal:attributes="href python:'%s/email_settings.html' % group.relative_url()">change email settings</a> or <a tal:attributes="href string:/groups/leave.html?groupId=${group/id}">leave</a>
+                </dd>
+
+        	</tal:block>
+        </dl>
+      <h2>Groups You Can Join</h2>
+      <div id="visiblegroups" tal:define="gc view/visible_groups_by_category;
+      									  oc python:view.ordered_categories(gc.keys())">
+        <tal:block tal:repeat="category oc">
+        <h3>
+            <a href="#" tal:content="category"/>
+        </h3>
+        <div tal:define="groups python:gc[category]">
+            <dl>
+            <tal:block tal:repeat="group groups"> 
+        		<!--  <dt tal:define="c group/group_members_info/fullMemberCount;
+        						postsExist group/group_stats/postsExist;
+        		                min group/group_stats/minPerDay;
+        		                max group/group_stats/maxPerDay;
+    							plural python:c&gt;1 or c == 0;">  -->
+        		<dt tal:define="c group/group_members_info/fullMemberCount;
+    							plural python:c&gt;1 or c == 0;">
+        			<a tal:attributes="href group/relative_url" tal:content="group/name"/>
+        			(<span tal:replace="group/group_type"/> group with
+        			  <tal:block tal:condition="c"><span tal:replace="c"/></tal:block><tal:block tal:condition="not:c">no</tal:block> member<span tal:condition="plural" tal:replace="string:s"/><!-- ,
+        			  <tal:block tal:condition="postsExist"><span tal:replace="min"/> to <span tal:replace="max"/> posts per day</tal:block><tal:block tal:condition="not:postsExist">no posts yet</tal:block> -->)
+        		</dt>
+        		<dd tal:condition="python:not user.has_role('Authenticated')">
+                    Already a member?
+        <a tal:attributes="href string:login.html?came_from=${group/relative_url}"
+            href="#"><strong>Log in.<strong></a> Otherwise
+      
+        <a tal:attributes="href string:/request_registration.html?form.groupId=${group/id}"
+          href="#"><strong>Sign up</strong></a> to join.
+      			</dd>
+      			<dd tal:condition="python:user.has_role('Authenticated') and group.joinability == 'anyone'">
+	                You may <a tal:attributes="href string:${group/relative_url}/join.html">join</a>.
+                </dd>
+                <dd tal:condition="python:user.has_role('Authenticated') and group.joinability != 'anyone'">
+	                Visit the <a tal:attributes="href string:${group/relative_url}">group</a> to join.
+                </dd>
+        		<dd tal:content="group/description"/>
+        	</tal:block>
+	        </dl>       
+        </div>
+        </tal:block>
+      </div>
+    </tal:block>
+    <tal:block metal:fill-slot="javascript">
+      <script src="/++resource++jquery-ui-1.8.7.coreandaccordian.min.js" 
+        type="text/javascript">&#160;</script>
+      <script type="text/javascript">
+        jQuery.noConflict()
+        jQuery("#visiblegroups").accordion({header: 'h3',
+                                            autoHeight: false});
+      </script>        
+    </tal:block>
+  </body>
+</html>
+
