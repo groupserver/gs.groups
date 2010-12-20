@@ -22,7 +22,7 @@ setup(name='gs.groups',
     packages=find_packages(exclude=['ez_setup']),
     namespace_packages=['gs'],
     include_package_data=True,
-    zip_safe=False,
+    zip_safe=True,
     install_requires=[
         'setuptools',
         # -*- Extra requirements: -*-
