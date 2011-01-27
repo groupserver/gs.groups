@@ -86,7 +86,7 @@
       </div>
     </tal:block>
     <tal:block metal:fill-slot="javascript">
-      <script src="/++resource++jquery-ui-1.8.7.coreandaccordian.min.js" 
+      <script src="/++resource++jquery-ui-1.8.9.custom.min.js" 
         type="text/javascript">&#160;</script>
       <script type="text/javascript">
         jQuery.noConflict()
