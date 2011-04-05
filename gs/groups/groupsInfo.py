@@ -94,14 +94,14 @@ class GSGroupsInfo(object):
                 try:
                     visibleGroups.append(getattr(self.groupsObj, groupId))
                 except:
-                    log.info("trouble adding '%s' to visible groups" % groupId)
+                    log.warn("trouble adding '%s' to visible groups" % groupId)
         else:
             top = time.time()
             visibleGroups = self.__visible_groups_for_current_user()
             visibleGroupsIds = [group.getId() for group in visibleGroups]
             self.siteUserVisibleGroupsIds.add(key, visibleGroupsIds)
             bottom = time.time()
-            log.info("Generated visible-groups for (%s) on %s (%s) in %.2fms" % 
+            log.debug("Generated visible-groups for (%s) on %s (%s) in %.2fms" % 
                       (userId, self.siteInfo.name, self.siteInfo.id, (bottom-top)*1000.0))        
             
         assert self.siteUserVisibleGroupsIds.has_key(key)
