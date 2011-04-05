@@ -18,9 +18,9 @@
         href="/login.html?came_from=/groups">Log in</a> to see your groups.</tal:block>
     <tal:block
       tal:condition="python:'DivisionAdmin' in user.getRolesInContext(view.siteInfo.siteObj)">
-      As a site administrator you can
-      <a href="/admindivision/start_a_group/">Start
-        a group.</a>
+      As a site administrator, you can
+      <a href="/startgroup.html">Start
+        a Group</a>.
     </tal:block>
       <h2 tal:condition="python:user.has_role('Authenticated') and mg">Your Group<tal:block tal:condition="python:groupCount&gt;1">s</tal:block></h2>
         <dl>
@@ -86,7 +86,7 @@
       </div>
     </tal:block>
     <tal:block metal:fill-slot="javascript">
-      <script src="/++resource++jquery-ui-1.8.7.coreandaccordian.min.js" 
+      <script src="/++resource++jquery-ui-1.8.9.custom.min.js" 
         type="text/javascript">&#160;</script>
       <script type="text/javascript">
         jQuery.noConflict()
