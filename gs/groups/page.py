@@ -12,7 +12,7 @@ class GroupsPage(BrowserView):
         self.groupsInfo = createObject('groupserver.GroupsInfo', groups)
         self.userInfo = createObject('groupserver.LoggedInUser', groups)
     
-    @property
+    @Lazy
     def categories(self):
         categories = self.groupsInfo.groupsObj.getProperty('categories', [])
     
@@ -31,7 +31,7 @@ class GroupsPage(BrowserView):
         
         return out_categories
     
-    @property
+    @Lazy
     def joinable_groups_by_category(self):
         groupsByCategory = {}
         groups = self.joinable_groups
@@ -44,13 +44,13 @@ class GroupsPage(BrowserView):
 
         return groupsByCategory
 
-    @property
+    @Lazy
     def joinable_groups(self):
         u = self.loggedInUser.user
         groups = map(IGSGroupInfo, self.groupsInfo.get_joinable_groups_for_user(u))
         return groups
 
-    @property
+    @Lazy
     def member_groups_by_category(self):
         groupsByCategory = {}
         groups = self.member_groups
@@ -63,7 +63,7 @@ class GroupsPage(BrowserView):
 
         return groupsByCategory
 
-    @property
+    @Lazy
     def member_groups(self):
         user = AccessControl.getSecurityManager().getUser()
         groups = map(IGSGroupInfo, self.groupsInfo.get_member_groups_for_user(user, user))
