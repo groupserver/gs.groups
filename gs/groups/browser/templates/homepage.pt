@@ -43,8 +43,9 @@
         	</tal:block>
         </dl>
       <h2>Groups You Can Join</h2>
-      <div id="visiblegroups" tal:define="gc view/visible_groups_by_category;
-      									  oc python:view.ordered_categories(gc.keys())">
+      <div id="visiblegroups" 
+        tal:define="gc view/joinable_groups_by_category;
+									  oc python:view.ordered_categories(gc.keys())">
         <tal:block tal:repeat="category oc">
         <h3>
             <a href="#" tal:content="category"/>

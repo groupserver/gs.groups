@@ -1,7 +1,7 @@
 # coding=utf-8
 from Products.Five import BrowserView
 from zope.component import createObject
-
+from zope.cachedescriptors.property import Lazy
 import AccessControl
 from Products.GSGroup.interfaces import IGSGroupInfo
 
@@ -32,9 +32,9 @@ class GroupsPage(BrowserView):
         return out_categories
     
     @property
-    def visible_groups_by_category(self):
+    def joinable_groups_by_category(self):
         groupsByCategory = {}
-        groups = self.visible_groups
+        groups = self.joinable_groups
         for group in groups:
             category = group.groupObj.getProperty('category', 'other')
             if groupsByCategory.has_key(category):
@@ -45,9 +45,9 @@ class GroupsPage(BrowserView):
         return groupsByCategory
 
     @property
-    def visible_groups(self):
-        groups = map(IGSGroupInfo, self.groupsInfo.get_visible_groups())
-        
+    def joinable_groups(self):
+        u = self.loggedInUser.user
+        groups = map(IGSGroupInfo, self.groupsInfo.get_joinable_groups_for_user(u))
         return groups
 
     @property
@@ -70,3 +70,9 @@ class GroupsPage(BrowserView):
 
         return groups
         
+    @Lazy
+    def loggedInUser(self):
+        retval = createObject('groupserver.LoggedInUser', self.context)
+        assert retval
+        return retval
+
