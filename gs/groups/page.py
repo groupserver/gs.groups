@@ -76,3 +76,15 @@ class GroupsPage(BrowserView):
         assert retval
         return retval
 
+    @Lazy
+    def privateGroups(self):
+        # TODO: create an entirely new groups info that does not sux.
+        #   See the comment by AM in groupsInfo.GSGroupsInfo for more.
+        allGroups = self.groupsInfo.get_all_groups()
+        jgIds = [g.id for g in self.joinable_groups]
+        securityManager = AccessControl.getSecurityManager()
+        retval = [IGSGroupInfo(g) for g in allGroups if 
+                    securityManager.checkPermission('View', g)
+                    and (g.getId() not in jgIds)]
+        return retval
+

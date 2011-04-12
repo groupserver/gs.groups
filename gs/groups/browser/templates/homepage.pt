@@ -85,6 +85,18 @@
         </div><!--cat-->
         </tal:block>
       </div><!--joinablegroups-->
+      <div id="private" tal:condition="view/privateGroups">
+        <h2>Private Groups</h2>
+          <ul>
+            <tal:block repeat="group view/privateGroups">
+              <li>
+                <a href="#" class="group"
+                  tal:attributes="href group/relative_url"
+                  tal:content="group/name">This Group</a>
+              </li>
+            </tal:block>
+          </ul>
+      </div><!--private-->
     </tal:block>
     <tal:block metal:fill-slot="javascript">
       <script src="/++resource++jquery-ui-1.8.9.custom.min.js" 
