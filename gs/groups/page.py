@@ -4,6 +4,7 @@ from zope.component import createObject
 from zope.cachedescriptors.property import Lazy
 import AccessControl
 from Products.GSGroup.interfaces import IGSGroupInfo
+from gs.group.privacy.groupprivacycontentprovider import Views
 
 class GroupsPage(BrowserView):
     def __init__(self, groups, request):
@@ -82,9 +83,25 @@ class GroupsPage(BrowserView):
         #   See the comment by AM in groupsInfo.GSGroupsInfo for more.
         allGroups = self.groupsInfo.get_all_groups()
         jgIds = [g.id for g in self.joinable_groups]
+        mgrps = [g.id for g in self.member_groups]
         securityManager = AccessControl.getSecurityManager()
         retval = [IGSGroupInfo(g) for g in allGroups if 
                     securityManager.checkPermission('View', g)
-                    and (g.getId() not in jgIds)]
+                    and Views(g).anon
+                    and (g.getId() not in jgIds)
+                    and (g.getId() not in mgrps)]
+        return retval
+
+    @Lazy
+    def secretGroups(self):
+        allGroups = self.groupsInfo.get_all_groups()
+        jgIds = [g.id for g in self.joinable_groups]
+        mgrps = [g.id for g in self.member_groups]
+        securityManager = AccessControl.getSecurityManager()
+        retval = [IGSGroupInfo(g) for g in allGroups if 
+                    securityManager.checkPermission('View', g)
+                    and not(Views(g).anon) # Different from private
+                    and (g.getId() not in jgIds)
+                    and (g.getId() not in mgrps)]
         return retval
 

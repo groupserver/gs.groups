@@ -87,16 +87,32 @@
       </div><!--joinablegroups-->
       <div id="private" tal:condition="view/privateGroups">
         <h2>Private Groups</h2>
-          <ul>
-            <tal:block repeat="group view/privateGroups">
-              <li>
-                <a href="#" class="group"
-                  tal:attributes="href group/relative_url"
-                  tal:content="group/name">This Group</a>
-              </li>
-            </tal:block>
-          </ul>
+        <ul>
+          <tal:block repeat="group view/privateGroups">
+            <li>
+              <a href="#" class="group"
+                tal:attributes="href group/relative_url"
+                tal:content="group/name">This Group</a>
+            </li>
+          </tal:block>
+        </ul>
       </div><!--private-->
+      <div id="secret" tal:condition="view/secretGroups">
+        <h2>Secret Groups</h2>
+        <p>
+          The following groups are secret. 
+          You can only see them because you are an administrator.
+        </p>
+        <ul>
+          <tal:block repeat="group view/secretGroups">
+            <li>
+              <a href="#" class="group"
+                tal:attributes="href group/relative_url"
+                tal:content="group/name">This Group</a>
+            </li>
+          </tal:block>
+        </ul>
+      </div><!--secret-->
     </tal:block>
     <tal:block metal:fill-slot="javascript">
       <script src="/++resource++jquery-ui-1.8.9.custom.min.js" 
