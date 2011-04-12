@@ -43,14 +43,14 @@
         	</tal:block>
         </dl>
       <h2>Groups You Can Join</h2>
-      <div id="visiblegroups" 
+      <div id="joinablegroups" 
         tal:define="gc view/joinable_groups_by_category;
 									  oc python:view.ordered_categories(gc.keys())">
         <tal:block tal:repeat="category oc">
         <h3>
             <a href="#" tal:content="category"/>
         </h3>
-        <div tal:define="groups python:gc[category]">
+        <div tal:define="groups python:gc[category]" class="cat">
             <dl>
             <tal:block tal:repeat="group groups"> 
         		<!--  <dt tal:define="c group/group_members_info/fullMemberCount;
@@ -82,16 +82,16 @@
         		<dd tal:content="group/description"/>
         	</tal:block>
 	        </dl>       
-        </div>
+        </div><!--cat-->
         </tal:block>
-      </div>
+      </div><!--joinablegroups-->
     </tal:block>
     <tal:block metal:fill-slot="javascript">
       <script src="/++resource++jquery-ui-1.8.9.custom.min.js" 
         type="text/javascript">&#160;</script>
       <script type="text/javascript">
         jQuery.noConflict()
-        jQuery("#visiblegroups").accordion({header: 'h3',
+        jQuery("#joinablegroups").accordion({header: 'h3',
                                             autoHeight: false});
       </script>        
     </tal:block>
