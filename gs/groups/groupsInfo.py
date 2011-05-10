@@ -273,6 +273,11 @@ class GSGroupsInfo(object):
 def groups_sorter(a, b):
     at = a.title_or_id().lower()
     bt = b.title_or_id().lower()
+    if not isinstance(at, unicode):
+        at = at.decode('UTF-8', 'ignore')
+    if not isinstance(bt, unicode):
+        bt = bt.decode('UTF-8', 'ignore')
+
     if at < bt:
         retval = -1
     elif at == bt:
