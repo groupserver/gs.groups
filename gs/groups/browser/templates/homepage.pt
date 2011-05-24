@@ -25,29 +25,29 @@
       <h2 tal:condition="python:user.has_role('Authenticated') and mg">Your Group<tal:block tal:condition="python:groupCount&gt;1">s</tal:block></h2>
         <dl>
             <tal:block tal:repeat="group mg"> 
-        		<dt tal:define="c group/group_members_info/fullMemberCount;
-        						postsExist group/group_stats/postsExist;
-        		                min group/group_stats/minPerDay;
-        		                max group/group_stats/maxPerDay;
-    							plural python:c&gt;1 or c == 0;">
-        			<a tal:attributes="href group/relative_url" tal:content="group/name"/>
-        			(<span tal:replace="group/group_type"/> group with
-        			  <tal:block tal:condition="c"><span tal:replace="c"/></tal:block><tal:block tal:condition="not:c">no</tal:block> member<span tal:condition="plural" tal:replace="string:s"/>,
-        			  <tal:block tal:condition="postsExist"><span tal:replace="min"/> to <span tal:replace="max"/> posts per day</tal:block><tal:block tal:condition="not:postsExist">no posts yet</tal:block>)
-        		</dt>
-        		<dd tal:content="group/description"/>
-        		<dd>
-	                You may <a tal:attributes="href python:'%s/email_settings.html' % group.relative_url()">change email settings</a> or <a tal:attributes="href string:/groups/leave.html?groupId=${group/id}">leave</a>
+            <dt tal:define="c group/group_members_info/fullMemberCount;
+                    postsExist group/group_stats/postsExist;
+                            min group/group_stats/minPerDay;
+                            max group/group_stats/maxPerDay;
+                  plural python:c&gt;1 or c == 0;">
+              <a tal:attributes="href group/relative_url" tal:content="group/name"/>
+              (<span tal:replace="group/group_type"/> group with
+                <tal:block tal:condition="c"><span tal:replace="c"/></tal:block><tal:block tal:condition="not:c">no</tal:block> member<span tal:condition="plural" tal:replace="string:s"/>,
+                <tal:block tal:condition="postsExist"><span tal:replace="min"/> to <span tal:replace="max"/> posts per day</tal:block><tal:block tal:condition="not:postsExist">no posts yet</tal:block>)
+            </dt>
+            <dd tal:content="group/description"/>
+            <dd>
+                  You may <a tal:attributes="href python:'%s/email_settings.html' % group.relative_url()">change email settings</a> or <a tal:attributes="href string:/groups/leave.html?groupId=${group/id}">leave</a>
                 </dd>
 
-        	</tal:block>
+          </tal:block>
         </dl>
       <div id="groups-you-can-join" 
         tal:condition="view/joinable_groups_by_category">
         <h2>Groups You Can Join</h2>
         <div id="joinablegroups" 
           tal:define="gc view/joinable_groups_by_category;
-									    oc python:view.ordered_categories(gc.keys())">
+                      oc python:view.ordered_categories(gc.keys())">
           <tal:block tal:repeat="category oc">
           <h3>
               <a href="#" tal:content="category"/>
@@ -55,35 +55,35 @@
           <div tal:define="groups python:gc[category]" class="cat">
               <dl>
               <tal:block tal:repeat="group groups"> 
-          		<!--  <dt tal:define="c group/group_members_info/fullMemberCount;
-          						postsExist group/group_stats/postsExist;
-          		                min group/group_stats/minPerDay;
-          		                max group/group_stats/maxPerDay;
-      							plural python:c&gt;1 or c == 0;">  -->
-          		<dt tal:define="c group/group_members_info/fullMemberCount;
-      							plural python:c&gt;1 or c == 0;">
-          			<a tal:attributes="href group/relative_url" tal:content="group/name"/>
-          			(<span tal:replace="group/group_type"/> group with
-          			  <tal:block tal:condition="c"><span tal:replace="c"/></tal:block><tal:block tal:condition="not:c">no</tal:block> member<span tal:condition="plural" tal:replace="string:s"/><!-- ,
-          			  <tal:block tal:condition="postsExist"><span tal:replace="min"/> to <span tal:replace="max"/> posts per day</tal:block><tal:block tal:condition="not:postsExist">no posts yet</tal:block> -->)
-          		</dt>
-          		<dd tal:condition="python:not user.has_role('Authenticated')">
+              <!--  <dt tal:define="c group/group_members_info/fullMemberCount;
+                      postsExist group/group_stats/postsExist;
+                              min group/group_stats/minPerDay;
+                              max group/group_stats/maxPerDay;
+                    plural python:c&gt;1 or c == 0;">  -->
+              <dt tal:define="c group/group_members_info/fullMemberCount;
+                    plural python:c&gt;1 or c == 0;">
+                <a tal:attributes="href group/relative_url" tal:content="group/name"/>
+                (<span tal:replace="group/group_type"/> group with
+                  <tal:block tal:condition="c"><span tal:replace="c"/></tal:block><tal:block tal:condition="not:c">no</tal:block> member<span tal:condition="plural" tal:replace="string:s"/><!-- ,
+                  <tal:block tal:condition="postsExist"><span tal:replace="min"/> to <span tal:replace="max"/> posts per day</tal:block><tal:block tal:condition="not:postsExist">no posts yet</tal:block> -->)
+              </dt>
+              <dd tal:condition="python:not user.has_role('Authenticated')">
                       Already a member?
           <a tal:attributes="href string:login.html?came_from=${group/relative_url}"
               href="#"><strong>Log in.<strong></a> Otherwise
         
           <a tal:attributes="href string:/request_registration.html?form.groupId=${group/id}"
             href="#"><strong>Sign up</strong></a> to join.
-        			</dd>
-        			<dd tal:condition="python:user.has_role('Authenticated') and group.joinability == 'anyone'">
-	                  You may <a tal:attributes="href string:${group/relative_url}/join.html">join</a>.
+              </dd>
+              <dd tal:condition="python:user.has_role('Authenticated') and group.joinability == 'anyone'">
+                    You may <a tal:attributes="href string:${group/relative_url}/join.html">join</a>.
                   </dd>
                   <dd tal:condition="python:user.has_role('Authenticated') and group.joinability != 'anyone'">
-	                  Visit the <a tal:attributes="href string:${group/relative_url}">group</a> to join.
+                    Visit the <a tal:attributes="href string:${group/relative_url}">group</a> to join.
                   </dd>
-          		<dd tal:content="group/description"/>
-          	</tal:block>
-	          </dl>       
+              <dd tal:content="group/description"/>
+            </tal:block>
+            </dl>       
           </div><!--cat-->
           </tal:block>
         </div><!--joinablegroups-->
