@@ -88,17 +88,28 @@
           </tal:block>
         </div><!--joinablegroups-->
       </div><!--groups-you-can-join-->
-      <div id="private" tal:condition="view/privateGroups">
+      <div id="private" tal:condition="view/privateGroups"
+         tal:define="auth python:user.has_role('Authenticated')">
         <h2>Private Groups</h2>
-        <ul>
+        <dl>
           <tal:block repeat="group view/privateGroups">
-            <li>
-              <a href="#" class="group"
-                tal:attributes="href group/relative_url"
-                tal:content="group/name">This Group</a>
-            </li>
+            <tal:block 
+              define="requestURL string:${group/url}/request.html">
+              <dt>
+                <a href="#" class="group"
+                  tal:attributes="href group/relative_url"
+                  tal:content="group/name">This Group</a></dt>
+              <dd>You may
+                <a tal:condition="auth"
+                  tal:attributes="href requestURL"
+                  href="#"><strong>request</strong> membership</a>
+                <a tal:condition="not:auth"
+                  tal:attributes="href string:/request_registration.html?form.came_from=${requestURL}"
+                  href="#"><strong>sign up</strong> and request membership</a>
+              </dd>
+            </tal:block>
           </tal:block>
-        </ul>
+        </dl>
       </div><!--private-->
       <div id="secret" tal:condition="view/secretGroups">
         <h2>Secret Groups</h2>
