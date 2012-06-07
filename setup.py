@@ -25,6 +25,7 @@ setup(name='gs.groups',
     zip_safe=True,
     install_requires=[
         'setuptools',
+        'gs.group.base', # For the marker interface
         'gs.site.home',# For the viewlet
         # -*- Extra requirements: -*-
     ],
