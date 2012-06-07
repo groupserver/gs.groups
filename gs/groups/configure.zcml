@@ -11,6 +11,7 @@
     permission="zope2.Public"
     factory=".groupsInfo.GSGroupsInfo"/>
 
+  <!-- The Groups page-->
   <browser:page 
     for="gs.groups.interfaces.IGSGroupsFolder"
     name="index.html"
@@ -18,5 +19,14 @@
     template="browser/templates/homepage.pt"
     permission="zope2.View"/>
 
+  <browser:viewlet
+    name="gs-groups-list"
+    for="Products.GSContent.interfaces.IGSSiteFolder"
+    manager="gs.site.home.interfaces.ISiteHomeLeftColumn"
+    class=".sitehomeviewlet.GroupsList"
+    template="browser/templates/site-home-viewlet.pt"
+    permission="zope2.View"
+    weight="10"
+    title="Groups" />
 
 </configure>
