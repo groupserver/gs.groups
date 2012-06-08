@@ -7,12 +7,33 @@ from secret import SecretGroups
 
 class ListVisible(SiteViewlet):
     @Lazy
+    def publicGroups(self):
+        return PublicGroups(self.context)
+
+    @Lazy
     def privateGroups(self):
         return PrivateGroups(self.context)
     
     @Lazy
-    def publicGroups(self):
-        return PublicGroups(self.context)
+    def visiblePublic(self):
+        return (len(self.publicGroups) > 0)
+
+    @Lazy
+    def visiblePrivate(self):
+        return (len(self.privateGroups) > 0)
+
+    @Lazy
+    def show(self):
+        retval = (self.visiblePublic and self.visiblePrivate)
+        return retval
+
+class NoListVisible(ListVisible):
+    @Lazy
+    def show(self):
+        retval = (not(self.visiblePublic and self.visiblePrivate) and 
+                  self.loggedInUser.anonymous)
+        return retval
+    
 
 class ListSecret(SiteViewlet):
     @Lazy

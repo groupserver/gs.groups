@@ -1,4 +1,6 @@
+# coding=utf-8
 from zope.interface.interface import Interface
+from zope.viewlet.interfaces import IViewletManager
 
 class IGSGroupsInfo(Interface):
     def get_visible_group_ids(): #@NoSelf
@@ -13,3 +15,6 @@ class IGSGroupsInfo(Interface):
 
 class IGSGroupsFolder(Interface):
     pass
+
+class IGroupList(IViewletManager):
+    '''The lists of groups on the site.'''

@@ -3,15 +3,24 @@
     <h2>Public</h2>
     <ul>
       <tal:block repeat="group view/publicGroups">
-        <li tal:content="group/name">A group</li>
+        <li tal:attributes="id string:gs-groups-list-secret-${group/id}">
+          <a href="#"
+             tal:attributes="href group/relativeURL"
+             tal:content="group/name">A group</a>
+        </li>
       </tal:block>
     </ul>
   </div><!--gs-groups-list-public-->
-  <div id="gs-groups-list-private">
+  <div id="gs-groups-list-private"
+       tal:condition="view/visiblePrivate">
     <h2>Private</h2>
     <ul>
       <tal:block repeat="group view/privateGroups">
-        <li tal:content="group/name">A group</li>
+        <li tal:attributes="id string:gs-groups-list-secret-${group/id}">
+          <a href="#"
+             tal:attributes="href group/relativeURL"
+             tal:content="group/name">A group</a>
+        </li>
       </tal:block>
     </ul>
   </div><!--gs-groups-list-private-->

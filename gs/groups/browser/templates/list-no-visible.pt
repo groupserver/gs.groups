@@ -1,0 +1,11 @@
+<div id="gs-groups-list-no-visible"
+     class="info ui-widget-content ui-corner-all">
+  <p>
+    <span class="ui-icon ui-icon-info">&#160;</span>
+    You must 
+    <a href="/login.html"><strong>login</strong> to view the groups</a>
+    on
+    <span class="site"
+          tal:content="view/siteInfo/name">this site</span>.
+  </p>
+</div><!--gs-groups-list-no-visible-->

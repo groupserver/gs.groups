@@ -1,0 +1,4 @@
+<div id="gs-groups-list"
+     tal:content="structure provider:groupserver.GroupsList">
+  The list of groups on this site.
+</div><!--gs-groups-list-->
