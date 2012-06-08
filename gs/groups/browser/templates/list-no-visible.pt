@@ -2,7 +2,7 @@
      class="info ui-widget-content ui-corner-all">
   <p>
     <span class="ui-icon ui-icon-info">&#160;</span>
-    Members of groups on this site must 
-    <a href="/login.html"><strong>login</strong> to view the groups.</a>
+    <a href="/login.html"><strong>Login</strong> to view your groups</a>
+    if you are member of this site.
   </p>
 </div><!--gs-groups-list-no-visible-->
