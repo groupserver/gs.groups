@@ -1,0 +1,12 @@
+<dl class="gs-group-list">
+  <tal:block repeat="group view/groups">
+    <dt class="vcard"
+        tal:attributes="id string:gs-groups-list-${group/id}-name" >
+      <a href="#" class="url fn org group"
+         tal:attributes="href group/relativeURL"
+         tal:content="group/name">The name of the group</a>
+    </dt>
+    <dd tal:attributes="id string:gs-groups-list-${group/id}-description"
+        tal:content="group/description">A description of the group.</dd>
+  </tal:block>
+</dl>

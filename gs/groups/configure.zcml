@@ -62,4 +62,20 @@
     weight="30"
     title="Secret Groups" />
 
+  <!--The group list content provider itself-->
+  <!--=mpj17= While viewlets have some ZCML support, the simpler content
+    - providers do not. Odd. -->
+  <interface 
+    interface=".interfaces.IGroupListContentProvider"
+    type="zope.contentprovider.interfaces.ITALNamespaceData"/>
+  <class class=".contentprovider.GroupsListContentProvider">
+    <implements interface=".interfaces.IGroupListContentProvider"/>
+  </class>
+  <adapter
+    for="zope.interface.Interface 
+         zope.publisher.interfaces.browser.IDefaultBrowserLayer 
+         zope.interface.Interface"
+    factory=".contentprovider.GroupsListContentProvider"
+    provides="zope.contentprovider.interfaces.IContentProvider"
+    name="groupserver.GroupListContent"/>
 </configure>

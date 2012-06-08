@@ -1,27 +1,20 @@
 <div id="gs-groups-list-visible">
-  <div id="gs-groups-list-public">
+  <div id="gs-groups-list-public"
+       tal:condition="view/visiblePublic">
     <h3>Public</h3>
-    <ul>
-      <tal:block repeat="group view/publicGroups">
-        <li tal:attributes="id string:gs-groups-list-secret-${group/id}">
-          <a href="#"
-             tal:attributes="href group/relativeURL"
-             tal:content="group/name">A group</a>
-        </li>
-      </tal:block>
-    </ul>
+    <tal:block 
+      define="groups view/publicGroups"
+      replace="structure provider:groupserver.GroupListContent">
+      A list of groups
+    </tal:block>
   </div><!--gs-groups-list-public-->
   <div id="gs-groups-list-private"
        tal:condition="view/visiblePrivate">
     <h3>Private</h3>
-    <ul>
-      <tal:block repeat="group view/privateGroups">
-        <li tal:attributes="id string:gs-groups-list-secret-${group/id}">
-          <a href="#"
-             tal:attributes="href group/relativeURL"
-             tal:content="group/name">A group</a>
-        </li>
-      </tal:block>
-    </ul>
+    <tal:block 
+      define="groups view/privateGroups"
+      replace="structure provider:groupserver.GroupListContent">
+      A list of groups
+    </tal:block>
   </div><!--gs-groups-list-private-->
 </div><!--gs-groups-list-->
