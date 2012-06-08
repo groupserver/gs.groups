@@ -47,7 +47,7 @@
     title="Groups" />
   <browser:viewlet
     name="gs-groups-list-no-visible"
-    manager="gs.site.home.interfaces.ISiteHomeLeftColumn"
+    manager=".interfaces.IGroupList"
     class=".sitehomeviewlet.NoListVisible"
     template="browser/templates/list-no-visible.pt"
     permission="zope2.View"
