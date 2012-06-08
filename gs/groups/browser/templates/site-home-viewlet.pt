@@ -1,9 +1,0 @@
-<div id="gs-groups-list">
-  <p>This is a list of groups</p>
-  <h2>Private</h2>
-  <ul>
-    <tal:block repeat="group view/privateGroups">
-      <li tal:content="group/name">A group</li>
-    </tal:block>
-  </ul>
-</div>

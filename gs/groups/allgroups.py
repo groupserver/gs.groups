@@ -10,6 +10,8 @@ from gs.group.base.interfaces import IGSGroupMarker
 
 FOLDER_TYPES =  ('Folder', 'Folder (Ordered)')
 
+# --=mpj17=-- This deliberately has an awkward name so people are less
+# likely to use it
 class AllGroupsOnSite(object):
     def __init__(self, context):
         self.context = context

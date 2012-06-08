@@ -1,0 +1,18 @@
+<div id="gs-groups-list-visible">
+  <div id="gs-groups-list-public">
+    <h2>Public</h2>
+    <ul>
+      <tal:block repeat="group view/publicGroups">
+        <li tal:content="group/name">A group</li>
+      </tal:block>
+    </ul>
+  </div><!--gs-groups-list-public-->
+  <div id="gs-groups-list-private">
+    <h2>Private</h2>
+    <ul>
+      <tal:block repeat="group view/privateGroups">
+        <li tal:content="group/name">A group</li>
+      </tal:block>
+    </ul>
+  </div><!--gs-groups-list-private-->
+</div><!--gs-groups-list-->

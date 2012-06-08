@@ -20,13 +20,23 @@
     permission="zope2.View"/>
 
   <browser:viewlet
-    name="gs-groups-list"
+    name="gs-groups-list-visible"
     for="Products.GSContent.interfaces.IGSSiteFolder"
     manager="gs.site.home.interfaces.ISiteHomeLeftColumn"
-    class=".sitehomeviewlet.GroupsList"
-    template="browser/templates/site-home-viewlet.pt"
+    class=".sitehomeviewlet.ListVisible"
+    template="browser/templates/list-visible.pt"
     permission="zope2.View"
     weight="10"
     title="Groups" />
+
+  <browser:viewlet
+    name="gs-groups-list-secret"
+    for="Products.GSContent.interfaces.IGSSiteFolder"
+    manager="gs.site.home.interfaces.ISiteHomeLeftColumn"
+    class=".sitehomeviewlet.ListSecret"
+    template="browser/templates/list-secret.pt"
+    permission="zope2.ManageProperties"
+    weight="11"
+    title="Secret Groups" />
 
 </configure>
