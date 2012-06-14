@@ -24,7 +24,7 @@ class ListVisible(SiteViewlet):
 
     @Lazy
     def show(self):
-        retval = (self.visiblePublic and self.visiblePrivate)
+        retval = (self.visiblePublic or self.visiblePrivate)
         return retval
 
 class NoListVisible(ListVisible):
