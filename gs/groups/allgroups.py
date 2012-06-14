@@ -32,6 +32,7 @@ class AllGroupsOnSite(object):
         retval = [createObject('groupserver.GroupInfo', g)
                   for g in self.groupsFolder.objectValues(FOLDER_TYPES)
                   if IGSGroupMarker.providedBy(g)]
+        retval.sort(key=lambda g:g.name.lower())
         return retval
 
     @Lazy
