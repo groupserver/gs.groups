@@ -45,8 +45,7 @@ class GSGroupsInfo(object):
         
         self.folderTypes = ['Folder', 'Folder (Ordered)']
 
-        self.da = context.zsqlalchemy
-        self.groupQuery = GroupQuery(context, self.da)
+        self.groupQuery = GroupQuery(context)
         self.__allGroups = None
                 
     def __get_groups_object(self):
