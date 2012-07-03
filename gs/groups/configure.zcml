@@ -11,12 +11,71 @@
     permission="zope2.Public"
     factory=".groupsInfo.GSGroupsInfo"/>
 
+  <!-- The Groups page-->
   <browser:page 
     for="gs.groups.interfaces.IGSGroupsFolder"
     name="index.html"
     class="gs.groups.page.GroupsPage"
     template="browser/templates/homepage.pt"
     permission="zope2.View"/>
+  
+  <!--The groups list on the site homepage.-->
+  <browser:viewlet
+    name="gs-groups-list"
+    for="Products.GSContent.interfaces.IGSSiteFolder"
+    manager="gs.site.home.interfaces.ISiteHomeLeftColumn"
+    class="gs.viewlet.viewlet.SiteViewlet"
+    template="browser/templates/list.pt"
+    permission="zope2.View"
+    weight="30"
+    title="Groups" />
+  <!--The viewlet manager for holding the different types of list-->
+  <browser:viewletManager
+    name="groupserver.GroupsList"
+    permission="zope2.View"
+    provides=".interfaces.IGroupList"
+    class="gs.viewlet.manager.WeightOrderedViewletManager"
+    template="browser/templates/simplemanager.pt"/>
+  <!--The lists themselves-->
+  <browser:viewlet
+    name="gs-groups-list-visible"
+    manager=".interfaces.IGroupList"
+    class=".sitehomeviewlet.ListVisible"
+    template="browser/templates/list-visible.pt"
+    permission="zope2.View"
+    weight="10"
+    title="Groups" />
+  <browser:viewlet
+    name="gs-groups-list-no-visible"
+    manager=".interfaces.IGroupList"
+    class=".sitehomeviewlet.NoListVisible"
+    template="browser/templates/list-no-visible.pt"
+    permission="zope2.View"
+    weight="20"
+    title="All Groups Secret" />
+  <browser:viewlet
+    name="gs-groups-list-secret"
+    manager=".interfaces.IGroupList"
+    class=".sitehomeviewlet.ListSecret"
+    template="browser/templates/list-secret.pt"
+    permission="zope2.ManageProperties"
+    weight="30"
+    title="Secret Groups" />
 
-
+  <!--The group list content provider itself-->
+  <!--=mpj17= While viewlets have some ZCML support, the simpler content
+    - providers do not. Odd. -->
+  <interface 
+    interface=".interfaces.IGroupListContentProvider"
+    type="zope.contentprovider.interfaces.ITALNamespaceData"/>
+  <class class=".contentprovider.GroupsListContentProvider">
+    <implements interface=".interfaces.IGroupListContentProvider"/>
+  </class>
+  <adapter
+    for="zope.interface.Interface 
+         zope.publisher.interfaces.browser.IDefaultBrowserLayer 
+         zope.interface.Interface"
+    factory=".contentprovider.GroupsListContentProvider"
+    provides="zope.contentprovider.interfaces.IContentProvider"
+    name="groupserver.GroupListContent"/>
 </configure>

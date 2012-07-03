@@ -25,6 +25,10 @@ setup(name='gs.groups',
     zip_safe=True,
     install_requires=[
         'setuptools',
+        'gs.group.base',
+        'gs.group.privacy',
+        'gs.site.home',# For the viewlet
+        'gs.viewlet',
         # -*- Extra requirements: -*-
     ],
     entry_points="""

@@ -1,0 +1,7 @@
+<div id="gs-groups-list">
+  <h2>Groups</h2>
+  <tal:block content="structure provider:groupserver.GroupsList">
+    The list of groups on this site.
+    for="Products.GSContent.interfaces.IGSSiteFolder"
+  </tal:block>
+</div><!--gs-groups-list-->

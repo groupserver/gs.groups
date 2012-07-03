@@ -1,0 +1,8 @@
+<div id="gs-groups-list-no-visible"
+     class="info ui-widget-content ui-corner-all">
+  <p>
+    <span class="ui-icon ui-icon-info">&#160;</span>
+    <a href="/login.html"><strong>Login</strong> to view your groups</a>
+    if you are member of this site.
+  </p>
+</div><!--gs-groups-list-no-visible-->
