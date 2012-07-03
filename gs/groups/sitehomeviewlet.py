@@ -34,8 +34,12 @@ class NoListVisible(ListVisible):
                   self.loggedInUser.anonymous)
         return retval
     
-
 class ListSecret(SiteViewlet):
     @Lazy
     def secretGroups(self):
         return SecretGroups(self.context)
+    
+    @Lazy
+    def show(self):
+        retval = self.loggedInUser.anonymous or (len(self.secretGroups) > 0)
+        return retval
