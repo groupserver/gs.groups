@@ -4,6 +4,7 @@ from gs.viewlet.viewlet import SiteViewlet
 from public import PublicGroups
 from private import PrivateGroups
 from secret import SecretGroups
+from yourgroups import YourGroups 
 
 class ListVisible(SiteViewlet):
     @Lazy
@@ -38,7 +39,7 @@ class ListSecret(SiteViewlet):
     @Lazy
     def secretGroups(self):
         return SecretGroups(self.context)
-    
+
     @Lazy
     def show(self):
         retval = self.loggedInUser.anonymous or (len(self.secretGroups) > 0)
