@@ -68,9 +68,9 @@ class GSGroupsInfo(object):
     def get_all_groups(self):
         assert self.groupsObj
         if self.__allGroups == None:
-            self.__allGroups = [g for g in \
-                         self.groupsObj.objectValues(self.folderTypes)
-                         if g.getProperty('is_group', False)]
+            folders = self.groupsObj.objectValues(self.folderTypes)
+            self.__allGroups = [g for g in folders
+                                if g.getProperty('is_group', False)]
             self.__allGroups.sort(groups_sorter)
         retval = self.__allGroups
         assert type(retval) == list
