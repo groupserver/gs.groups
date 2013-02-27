@@ -27,6 +27,7 @@ class PublicGroups(MemberGroups):
             if GroupVisibility(g).isPublic:
                 g.member = user_member_of_group(self.loggedInUser, g)
                 retval.append(g)
+        retval.sort(key=lambda g: g.name.lower())
         return retval
 
     def __len__(self):
@@ -46,6 +47,7 @@ class PrivateGroups(MemberGroups):
             if GroupVisibility(g).isPrivate:
                 g.member = user_member_of_group(self.loggedInUser, g)
                 retval.append(g)
+        retval.sort(key=lambda g: g.name.lower())
         return retval
 
     def __len__(self):
@@ -65,6 +67,7 @@ class SecretGroups(MemberGroups):
             if GroupVisibility(g).isSecret:
                 g.member = user_member_of_group(self.loggedInUser, g)
                 retval.append(g)
+        retval.sort(key=lambda g: g.name.lower())
         return retval
 
     def __len__(self):
