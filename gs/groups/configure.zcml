@@ -23,11 +23,11 @@
   <browser:viewlet
     name="gs-groups-list"
     for="Products.GSContent.interfaces.IGSSiteFolder"
-    manager="gs.site.home.interfaces.ISiteHomeLeftColumn"
+    manager="gs.site.home.interfaces.ISiteHomeMain"
     class="gs.viewlet.viewlet.SiteViewlet"
     template="browser/templates/list.pt"
     permission="zope2.View"
-    weight="30"
+    weight="10"
     title="Groups" />
   <!--The viewlet manager for holding the different types of list-->
   <browser:viewletManager
