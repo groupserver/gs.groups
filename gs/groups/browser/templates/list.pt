@@ -1,8 +1,4 @@
-<div id="gs-groups-list">
-  <h2>Groups</h2>
-  <p>Below is a list of the groups you can view on this site.</p>
-  <tal:block content="structure provider:groupserver.GroupsList">
-    The list of groups on this site.
-    for="Products.GSContent.interfaces.IGSSiteFolder"
-  </tal:block>
+<div id="gs-groups-list"
+     tal:content="structure provider:groupserver.GroupsList">
+  The list of groups on this site.
 </div><!--gs-groups-list-->

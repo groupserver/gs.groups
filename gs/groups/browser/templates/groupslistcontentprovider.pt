@@ -1,12 +1,14 @@
-<dl class="gs-group-list">
+<div class="gs-group-list" role="list">
   <tal:block repeat="group view/groups">
-    <dt class="vcard"
-        tal:attributes="id string:gs-groups-list-${group/id}-name" >
-      <a href="#" class="url fn org group"
-         tal:attributes="href group/relativeURL"
-         tal:content="group/name">The name of the group</a>
-    </dt>
-    <dd tal:attributes="id string:gs-groups-list-${group/id}-description"
-        tal:content="group/description">A description of the group.</dd>
+    <div class="vcard" role="listitem"
+        tal:attributes="id string:gs-groups-list-${group/id}-name;
+                        title group/description"
+        data-toggle="tooltip">
+      <a href="#" class="url"
+         tal:attributes="href string:${group/relativeURL}/">
+         <h4 class="fn org group" tal:content="group/name">This group</h4></a>
+         <span class="gs-group-list-membership muted small" 
+               tal:condition="group/member">You are a member</span>
+    </div><!--listitem-->
   </tal:block>
-</dl>
+</div><!--gs-group-list-->
