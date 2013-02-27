@@ -1,9 +1,9 @@
 # coding=utf-8
 from zope.cachedescriptors.property import Lazy
 from zope.component import createObject
-from gs.group.privacy.visibility import GroupVisibility
 from gs.group.member.base.utils import user_member_of_group
 from allgroups import AllGroupsOnSite
+
 
 class YourGroups(AllGroupsOnSite):
     # --=mpj17=-- should this be moved to gs.group.member.base?
@@ -15,6 +15,6 @@ class YourGroups(AllGroupsOnSite):
 
     @Lazy
     def groups(self):
-        retval = [g for g in self.get_all_groups() 
+        retval = [g for g in self.get_all_groups()
                   if user_member_of_group(self.loggedInUser, g)]
         return retval
