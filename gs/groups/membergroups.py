@@ -2,7 +2,7 @@
 from zope.cachedescriptors.property import Lazy
 from zope.component import createObject
 from gs.group.privacy.visibility import GroupVisibility
-from gs.group.member.base.utils import user_member_of_group
+from gs.group.member.base import user_member_of_group
 
 
 class MemberGroups(object):
