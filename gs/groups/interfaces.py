@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 from zope.contentprovider.interfaces import IContentProvider
 from zope.interface.interface import Interface
 from zope.schema import List, Text

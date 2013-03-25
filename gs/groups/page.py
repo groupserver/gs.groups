@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 from Products.Five import BrowserView
 from zope.component import createObject
 from zope.cachedescriptors.property import Lazy
@@ -6,19 +6,20 @@ import AccessControl
 from Products.GSGroup.interfaces import IGSGroupInfo
 from gs.group.privacy.groupprivacycontentprovider import Views
 
+
 class GroupsPage(BrowserView):
     def __init__(self, groups, request):
         BrowserView.__init__(self, groups, request)
         self.siteInfo = createObject('groupserver.SiteInfo', groups)
         self.groupsInfo = createObject('groupserver.GroupsInfo', groups)
         self.userInfo = createObject('groupserver.LoggedInUser', groups)
-    
+
     @Lazy
     def categories(self):
         categories = self.groupsInfo.groupsObj.getProperty('categories', [])
-    
+
         return categories
-    
+
     def ordered_categories(self, allcategories):
         out_categories = []
         # if we have a categories property, we sort by those first, then alpha
@@ -26,12 +27,12 @@ class GroupsPage(BrowserView):
             if category in allcategories:
                 allcategories.remove(category)
                 out_categories.append(category)
-        
+
         allcategories.sort()
         out_categories += allcategories
-        
+
         return out_categories
-    
+
     @Lazy
     def joinable_groups_by_category(self):
         groupsByCategory = {}
@@ -48,7 +49,8 @@ class GroupsPage(BrowserView):
     @Lazy
     def joinable_groups(self):
         u = self.loggedInUser.user
-        groups = map(IGSGroupInfo, self.groupsInfo.get_joinable_groups_for_user(u))
+        groups = map(IGSGroupInfo,
+                    self.groupsInfo.get_joinable_groups_for_user(u))
         return groups
 
     @Lazy
@@ -67,10 +69,10 @@ class GroupsPage(BrowserView):
     @Lazy
     def member_groups(self):
         user = AccessControl.getSecurityManager().getUser()
-        groups = map(IGSGroupInfo, self.groupsInfo.get_member_groups_for_user(user, user))
-
+        groups = map(IGSGroupInfo,
+                    self.groupsInfo.get_member_groups_for_user(user, user))
         return groups
-        
+
     @Lazy
     def loggedInUser(self):
         retval = createObject('groupserver.LoggedInUser', self.context)
@@ -85,7 +87,7 @@ class GroupsPage(BrowserView):
         jgIds = [g.id for g in self.joinable_groups]
         mgrps = [g.id for g in self.member_groups]
         securityManager = AccessControl.getSecurityManager()
-        retval = [IGSGroupInfo(g) for g in allGroups if 
+        retval = [IGSGroupInfo(g) for g in allGroups if
                     securityManager.checkPermission('View', g)
                     and Views(g).anon
                     and (g.getId() not in jgIds)
@@ -98,10 +100,9 @@ class GroupsPage(BrowserView):
         jgIds = [g.id for g in self.joinable_groups]
         mgrps = [g.id for g in self.member_groups]
         securityManager = AccessControl.getSecurityManager()
-        retval = [IGSGroupInfo(g) for g in allGroups if 
+        retval = [IGSGroupInfo(g) for g in allGroups if
                     securityManager.checkPermission('View', g)
-                    and not(Views(g).anon) # Different from private
+                    and not(Views(g).anon)  # Different from private
                     and (g.getId() not in jgIds)
                     and (g.getId() not in mgrps)]
         return retval
-

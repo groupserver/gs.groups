@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 from AccessControl import ModuleSecurityInfo
 from AccessControl import allow_class
 
