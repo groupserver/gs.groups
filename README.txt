@@ -1,17 +1,31 @@
+=============
+``gs.groups``
+=============
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The list of groups on a site
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:Author: `Michael JasonSmith`_
+:Contact: Michael JasonSmith <mpj17@onlinegroups.net>
+:Date: 2013-03-26
+:Organization: `GroupServer.org`_
+:Copyright: This document is licensed under a
+  `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
+  by `OnlineGroups.Net`_.
+
 Introduction
 ============
 
 This module is concerned with the "groups" area of a site: the collection
 of all the groups.
 
-
 Lists
 =====
 
 The lists are viewlets, which appear in the
 ``gs.groups.interfaces.IGroupList`` manager. This manager, in turn, appears
-in the left-hand column of the site homepage (in the manager
-``gs.site.home.interfaces.ISiteHomeLeftColumn``).
+in the main column of the site homepage (in the manager
+``gs.site.home.interfaces.ISiteHomeMain``).
 
 This product provides three group-list viewlets:
 
@@ -22,3 +36,22 @@ This product provides three group-list viewlets:
   is given to login.
 
 * Finally, the site-administrator is shown a list of secret groups.
+
+The ``groupserver.GroupListContent`` content provider displays the actual
+list of groups.
+
+Resources
+=========
+
+- Code repository: https://source.iopen.net/groupserver/gs.groups
+- Questions and comments to http://groupserver.org/groups/development
+- Report bugs at https://redmine.iopen.net/projects/groupserver
+
+.. _GroupServer: http://groupserver.org/
+.. _GroupServer.org: http://groupserver.org/
+.. _OnlineGroups.Net: https://onlinegroups.net
+.. _Michael JasonSmith: http://groupserver.org/p/mpj17
+.. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
+   http://creativecommons.org/licenses/by-sa/3.0/nz/
+
+..  LocalWords:  ISiteHomeMain groupserver GroupListContent nz
