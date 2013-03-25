@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 import os
 from setuptools import setup, find_packages
 from version import get_version
@@ -10,9 +10,16 @@ setup(name='gs.groups',
     description="The groups area of a site",
     long_description=open("README.txt").read() + "\n" +
                     open(os.path.join("docs", "HISTORY.txt")).read(),
-    # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-        "Programming Language :: Python",
+      "Development Status :: 4 - Beta",
+      "Environment :: Web Environment",
+      "Framework :: Zope2",
+      "Intended Audience :: Developers",
+      "License :: Other/Proprietary License",
+      "Natural Language :: English",
+      "Operating System :: POSIX :: Linux"
+      "Programming Language :: Python",
+      "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     keywords='groups',
     author='Alice Murphy',
@@ -25,14 +32,20 @@ setup(name='gs.groups',
     zip_safe=True,
     install_requires=[
         'setuptools',
+        'zope.cachedescriptors',
+        'zope.component',
+        'zope.interface',
+        'zope.schema',
+        'zope.viewlet',
+        'AccessControl',
+        'Zope2',
         'gs.group.base',
+        'gs.group.member.base',
         'gs.group.privacy',
-        'gs.site.home',# For the viewlet
+        'gs.site.home',  # For the viewlet
         'gs.viewlet',
-        # -*- Extra requirements: -*-
     ],
     entry_points="""
     # -*- Entry points: -*-
     """,
 )
-
