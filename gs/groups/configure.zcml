@@ -46,14 +46,6 @@
     weight="10"
     title="Groups" />
   <browser:viewlet
-    name="gs-groups-list-no-visible"
-    manager=".interfaces.IGroupList"
-    class=".sitehomeviewlet.NoListVisible"
-    template="browser/templates/list-no-visible.pt"
-    permission="zope2.View"
-    weight="20"
-    title="All Groups Secret" />
-  <browser:viewlet
     name="gs-groups-list-secret"
     manager=".interfaces.IGroupList"
     class=".sitehomeviewlet.ListSecret"
@@ -61,6 +53,15 @@
     permission="zope2.ManageProperties"
     weight="30"
     title="Secret Groups" />
+
+  <browser:viewlet
+    name="gs-groups-list-no-visible"
+    manager="gs.site.home.interfaces.ISiteHomeSecondary"
+    class=".sitehomeviewlet.NoListVisible"
+    template="browser/templates/list-no-visible.pt"
+    permission="zope2.View"
+    weight="20"
+    title="I pity the fool that fails to sign in" />
 
   <!--The group list content provider itself-->
   <!--=mpj17= While viewlets have some ZCML support, the simpler content

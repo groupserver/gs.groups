@@ -1,8 +1,10 @@
-<div id="gs-groups-list-no-visible"
-     class="info ui-widget-content ui-corner-all">
+<div id="gs-groups-list-no-visible" role="region"
+     aria-labelledby="gs-groups-list-no-visible-h">
+  <h3 id="gs-groups-list-no-visible-h">Membership</h3>
   <p>
-    <span class="ui-icon ui-icon-info">&#160;</span>
-    <a href="/login.html"><strong>Login</strong> to view your groups</a>
-    if you are member of this site.
+    You must be a signed-in member of this site to participate.
   </p>
+  <div class="btn-toolbar">
+    <a href="/login.html" class="btn btn-small">Sign in</a>
+  </div>
 </div><!--gs-groups-list-no-visible-->
