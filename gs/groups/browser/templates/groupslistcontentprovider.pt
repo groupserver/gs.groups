@@ -1,4 +1,4 @@
-<div class="gs-group-list" role="list">
+<div class="gs-group-list">
   <tal:block repeat="group view/groups">
     <div class="vcard" role="listitem"
         tal:attributes="id string:gs-groups-list-${group/id}-name;

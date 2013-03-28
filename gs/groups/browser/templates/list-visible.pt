@@ -1,16 +1,18 @@
 <div id="gs-groups-list-visible">
-  <div id="gs-groups-list-public"
-       tal:condition="view/visiblePublic">
-    <h2>Public groups</h2>
+  <div id="gs-groups-list-public" tal:condition="view/visiblePublic"
+       aria-labelledby="gs-groups-list-public-h"
+       role="list">
+    <h2 id="gs-groups-list-public-h">Public groups</h2>
     <tal:block 
       define="groups view/publicGroups"
       replace="structure provider:groupserver.GroupListContent">
       A list of groups
     </tal:block>
   </div><!--gs-groups-list-public-->
-  <div id="gs-groups-list-private"
-       tal:condition="view/visiblePrivate">
-    <h2>Private groups</h2>
+  <div id="gs-groups-list-private" tal:condition="view/visiblePrivate"
+       aria-labelledby="gs-groups-list-private-h"
+       role="list">
+    <h2 id="gs-groups-list-private-h">Private groups</h2>
     <tal:block 
       define="groups view/privateGroups"
       replace="structure provider:groupserver.GroupListContent">
