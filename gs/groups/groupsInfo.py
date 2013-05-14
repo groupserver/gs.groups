@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 import time
 from zope.app.folder.interfaces import IFolder
 from zope.cachedescriptors.property import Lazy
@@ -39,9 +39,13 @@ class GSGroupsInfo(object):
     siteUserVisibleGroupsIds.set_max_objects(256)
 
     def __init__(self, context):
+        print 'Elsewhere 0'
         self.context = context
+        print 'Elsewhere 1'
         self.siteInfo = IGSSiteInfo(context)
+        print 'Elsewhere 2'
         self.folderTypes = ['Folder', 'Folder (Ordered)']
+        print 'Elsewhere 3'
         self.groupQuery = GroupQuery(context)
         self.__allGroups = None
 
