@@ -23,6 +23,7 @@ class GSGroupsInfoFactory(object):
 
     def __call__(self, context):
         retval = GSGroupsInfo(context)
+        assert retval, 'retval is {0}'.format(retval)
         return retval
 
     def getInterfaces(self):
@@ -34,20 +35,24 @@ class GSGroupsInfoFactory(object):
 class GSGroupsInfo(object):
     implements(IGSGroupsInfo)
     adapts(IFolder)
+    folderTypes = ['Folder', 'Folder (Ordered)']
 
     siteUserVisibleGroupsIds = LRUCache("siteUserVisibleGroupIds")
     siteUserVisibleGroupsIds.set_max_objects(256)
 
     def __init__(self, context):
-        print 'Elsewhere 0'
         self.context = context
-        print 'Elsewhere 1'
-        self.siteInfo = IGSSiteInfo(context)
-        print 'Elsewhere 2'
-        self.folderTypes = ['Folder', 'Folder (Ordered)']
-        print 'Elsewhere 3'
-        self.groupQuery = GroupQuery(context)
         self.__allGroups = None
+
+    @Lazy
+    def siteInfo(self):
+        retval = IGSSiteInfo(self.context)
+        return retval
+
+    @Lazy
+    def groupQuery(self):
+        retval = GroupQuery(self.context)
+        return retval
 
     @Lazy
     def groupsObj(self):
