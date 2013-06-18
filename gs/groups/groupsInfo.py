@@ -117,8 +117,7 @@ class GSGroupsInfo(object):
                         "%.2fms" % (userId, self.siteInfo.name,
                                     self.siteInfo.id, (bottom - top) * 1000.0))
 
-        assert self.siteUserVisibleGroupsIds.has_key(key)  # lint:ok
-        assert type(visibleGroups) == list
+        assert type(visibleGroups) == list, "visibleGroups is not a list"
         return visibleGroups
 
     def __visible_groups_for_current_user(self):
