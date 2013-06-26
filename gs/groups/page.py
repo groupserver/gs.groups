@@ -5,6 +5,7 @@ from zope.cachedescriptors.property import Lazy
 import AccessControl
 from Products.GSGroup.interfaces import IGSGroupInfo
 from gs.group.privacy.groupprivacycontentprovider import Views
+from Products.GSGroupMember.groupMembersInfo import GSGroupMembersInfo
 
 
 class GroupsPage(BrowserView):
@@ -13,6 +14,7 @@ class GroupsPage(BrowserView):
         self.siteInfo = createObject('groupserver.SiteInfo', groups)
         self.groupsInfo = createObject('groupserver.GroupsInfo', groups)
         self.userInfo = createObject('groupserver.LoggedInUser', groups)
+        self.groupMembersInfo = GSGroupMembersInfo(self.groupsInfo.groupObj)
 
     @Lazy
     def categories(self):
