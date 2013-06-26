@@ -25,14 +25,11 @@
       <h2 tal:condition="python:user.has_role('Authenticated') and mg">Your Group<tal:block tal:condition="python:groupCount&gt;1">s</tal:block></h2>
         <dl>
             <tal:block tal:repeat="group mg"> 
-            <dt tal:define="c group/group_members_info/fullMemberCount;
-                    postsExist group/group_stats/postsExist;
+            <dt tal:define="postsExist group/group_stats/postsExist;
                             min group/group_stats/minPerDay;
-                            max group/group_stats/maxPerDay;
-                  plural python:c&gt;1 or c == 0;">
+                            max group/group_stats/maxPerDay;">
               <a tal:attributes="href group/relative_url" tal:content="group/name"/>
-              (<span tal:replace="group/group_type"/> group with
-                <tal:block tal:condition="c"><span tal:replace="c"/></tal:block><tal:block tal:condition="not:c">no</tal:block> member<span tal:condition="plural" tal:replace="string:s"/>,
+              (<span tal:replace="group/group_type"/> group 
                 <tal:block tal:condition="postsExist"><span tal:replace="min"/> to <span tal:replace="max"/> posts per day</tal:block><tal:block tal:condition="not:postsExist">no posts yet</tal:block>)
             </dt>
             <dd tal:content="group/description"/>
@@ -55,17 +52,9 @@
           <div tal:define="groups python:gc[category]" class="cat">
               <dl>
               <tal:block tal:repeat="group groups"> 
-              <!--  <dt tal:define="c group/group_members_info/fullMemberCount;
-                      postsExist group/group_stats/postsExist;
-                              min group/group_stats/minPerDay;
-                              max group/group_stats/maxPerDay;
-                    plural python:c&gt;1 or c == 0;">  -->
-              <dt tal:define="c group/group_members_info/fullMemberCount;
-                    plural python:c&gt;1 or c == 0;">
+              <dt>
                 <a tal:attributes="href group/relative_url" tal:content="group/name"/>
-                (<span tal:replace="group/group_type"/> group with
-                  <tal:block tal:condition="c"><span tal:replace="c"/></tal:block><tal:block tal:condition="not:c">no</tal:block> member<span tal:condition="plural" tal:replace="string:s"/><!-- ,
-                  <tal:block tal:condition="postsExist"><span tal:replace="min"/> to <span tal:replace="max"/> posts per day</tal:block><tal:block tal:condition="not:postsExist">no posts yet</tal:block> -->)
+                (<span tal:replace="group/group_type"/> group)
               </dt>
               <dd tal:condition="python:not user.has_role('Authenticated')">
                       Already a member?
