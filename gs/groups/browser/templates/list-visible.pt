@@ -3,7 +3,7 @@
        aria-labelledby="gs-groups-list-public-h"
        role="list">
     <h2 id="gs-groups-list-public-h">Public groups</h2>
-    <tal:block 
+    <tal:block
       define="groups view/publicGroups"
       replace="structure provider:groupserver.GroupListContent">
       A list of groups
@@ -13,7 +13,7 @@
        aria-labelledby="gs-groups-list-private-h"
        role="list">
     <h2 id="gs-groups-list-private-h">Private groups</h2>
-    <tal:block 
+    <tal:block
       define="groups view/privateGroups"
       replace="structure provider:groupserver.GroupListContent">
       A list of groups
