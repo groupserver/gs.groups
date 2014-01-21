@@ -61,7 +61,7 @@
     manager=".interfaces.IGroupList"
     class=".sitehomeviewlet.ListSecret"
     template="browser/templates/list-secret.pt"
-    permission="zope2.ManageProperties"
+    permission="zope2.View"
     weight="30"
     title="Secret Groups" />
 
