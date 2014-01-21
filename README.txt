@@ -7,7 +7,7 @@ The list of groups on a site
 
 :Author: `Michael JasonSmith`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2013-03-26
+:Date: 2014-01-21
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -35,7 +35,11 @@ This product provides three group-list viewlets:
 * If there are no visible groups, and the person is logged out then advice
   is given to login.
 
-* Finally, the site-administrator is shown a list of secret groups.
+* Finally, the list of secret groups is shown. The list is shown to
+
+  + The site administrators, who see **all** the secret groups, and
+  + The members of the secret groups, who see **just** the secret groups
+    that they are members of.
 
 The ``groupserver.GroupListContent`` content provider displays the actual
 list of groups.
