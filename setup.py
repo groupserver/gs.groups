@@ -45,18 +45,28 @@ setup(name='gs.groups',
     zip_safe=False,
     install_requires=[
         'setuptools',
+        'zope.app.folder',
+        'zope.app.pagetemplate',
+        'zope.browserpage',  # For the browser:page ZCML
         'zope.cachedescriptors',
         'zope.component',
+        'zope.contentprovider',
         'zope.interface',
         'zope.schema',
+        'zope.tal',
+        'zope.tales',
         'zope.viewlet',
         'AccessControl',
         'Zope2',
+        'gs.content.base',
         'gs.group.base',
         'gs.group.member.base',
         'gs.group.privacy',
-        'gs.site.home',  # For the viewlet
+        'gs.site.home',  # For the viewlet manager
         'gs.viewlet',
+        'Products.GSContent',
+        'Products.GSGroup',
+        'Products.XWFCore',
     ],
     entry_points="""
     # -*- Entry points: -*-
