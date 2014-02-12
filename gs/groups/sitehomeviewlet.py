@@ -16,7 +16,8 @@ from __future__ import absolute_import
 from zope.cachedescriptors.property import Lazy
 from gs.viewlet.viewlet import SiteViewlet
 from .allgroups import AllGroupsOnSite
-from .membergroups import PublicGroups, PrivateGroups, SecretGroups
+from .membergroups import PublicGroups, RestrictedGroups, PrivateGroups, \
+    SecretGroups
 
 
 class ListVisible(SiteViewlet):
@@ -30,6 +31,10 @@ class ListVisible(SiteViewlet):
         return PublicGroups(self.context, self.allGroups.groups)
 
     @Lazy
+    def restrictedGroups(self):
+        return RestrictedGroups(self.context, self.allGroups.groups)
+
+    @Lazy
     def privateGroups(self):
         return PrivateGroups(self.context, self.allGroups.groups)
 
@@ -38,12 +43,18 @@ class ListVisible(SiteViewlet):
         return (len(self.publicGroups) > 0)
 
     @Lazy
+    def visibleRestricted(self):
+        return (len(self.restrictedGroups) > 0) \
+            and not self.loggedInUser.anonymous  # FIXME: Site member
+
+    @Lazy
     def visiblePrivate(self):
         return (len(self.privateGroups) > 0)
 
     @Lazy
     def show(self):
-        retval = (self.visiblePublic or self.visiblePrivate)
+        retval = (self.visiblePublic or self.visibleRestricted
+                    or self.visiblePrivate)
         return retval
 
 

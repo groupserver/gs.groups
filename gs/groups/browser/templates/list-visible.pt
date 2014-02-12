@@ -9,6 +9,16 @@
       A list of groups
     </tal:block>
   </div><!--gs-groups-list-public-->
+  <div id="gs-groups-list-restricted" tal:condition="view/visibleRestricted"
+       aria-labelledby="gs-groups-list-restricted-h"
+       role="list">
+    <h2 id="gs-groups-list-restricted-h">Restricted groups</h2>
+    <tal:block
+      define="groups view/restrictedGroups"
+      replace="structure provider:groupserver.GroupListContent">
+      A list of groups
+    </tal:block>
+  </div><!--gs-groups-list-restricted-->
   <div id="gs-groups-list-private" tal:condition="view/visiblePrivate"
        aria-labelledby="gs-groups-list-private-h"
        role="list">

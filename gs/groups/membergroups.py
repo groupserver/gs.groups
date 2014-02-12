@@ -51,6 +51,24 @@ class PublicGroups(MemberGroups):
         return iter(self.groups)
 
 
+class RestrictedGroups(MemberGroups):
+    @Lazy
+    def groups(self):
+        retval = []
+        for g in self.origGroups:
+            if GroupVisibility(g).isPublicToSite:
+                g.member = user_member_of_group(self.loggedInUser, g)
+                retval.append(g)
+        retval.sort(key=lambda g: g.name.lower())
+        return retval
+
+    def __len__(self):
+        return len(self.groups)
+
+    def __iter__(self):
+        return iter(self.groups)
+
+
 class PrivateGroups(MemberGroups):
     # --=mpj17=-- should this be moved to gs.group.member.base?
 
