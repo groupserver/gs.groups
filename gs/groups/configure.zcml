@@ -50,20 +50,36 @@
     template="browser/templates/simplemanager.pt"/>
   <!--The lists themselves-->
   <browser:viewlet
-    name="gs-groups-list-visible"
+    name="gs-groups-list-public"
     manager=".interfaces.IGroupList"
-    class=".sitehomeviewlet.ListVisible"
-    template="browser/templates/list-visible.pt"
+    class=".sitehomeviewlet.ListPublic"
+    template="browser/templates/list-public.pt"
     permission="zope2.View"
     weight="10"
-    title="Groups" />
+    title="Public Groups" />
+  <browser:viewlet
+    name="gs-groups-list-private"
+    manager=".interfaces.IGroupList"
+    class=".sitehomeviewlet.ListPrivate"
+    template="browser/templates/list-private.pt"
+    permission="zope2.View"
+    weight="20"
+    title="Private Groups" />
+  <browser:viewlet
+    name="gs-groups-list-restricted"
+    manager=".interfaces.IGroupList"
+    class=".sitehomeviewlet.ListRestricted"
+    template="browser/templates/list-restricted.pt"
+    permission="zope2.View"
+    weight="30"
+    title="Restricted Groups" />
   <browser:viewlet
     name="gs-groups-list-secret"
     manager=".interfaces.IGroupList"
     class=".sitehomeviewlet.ListSecret"
     template="browser/templates/list-secret.pt"
     permission="zope2.View"
-    weight="30"
+    weight="40"
     title="Secret Groups" />
 
   <browser:viewlet

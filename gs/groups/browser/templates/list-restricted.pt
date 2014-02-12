@@ -1,0 +1,9 @@
+<div id="gs-groups-list-restricted"
+     aria-labelledby="gs-groups-list-restricted-h"
+     role="list">
+  <h2 id="gs-groups-list-restricted-h">Restricted groups</h2>
+  <tal:block
+    define="groups view/restrictedGroups"
+    replace="structure provider:groupserver.GroupListContent">
+    A list of groups
+  </tal:block>

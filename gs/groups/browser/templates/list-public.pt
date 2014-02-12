@@ -1,0 +1,10 @@
+<div id="gs-groups-list-public"
+     aria-labelledby="gs-groups-list-public-h"
+     role="list">
+  <h2 id="gs-groups-list-public-h">Public groups</h2>
+  <tal:block
+    define="groups view/publicGroups"
+    replace="structure provider:groupserver.GroupListContent">
+    A list of groups
+  </tal:block>
+</div><!--gs-groups-list-public-->

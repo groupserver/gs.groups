@@ -12,67 +12,66 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 from zope.cachedescriptors.property import Lazy
-from gs.viewlet.viewlet import SiteViewlet
+from gs.group.member.base import user_member_of_site
+from gs.viewlet import SiteViewlet
 from .allgroups import AllGroupsOnSite
 from .membergroups import PublicGroups, RestrictedGroups, PrivateGroups, \
     SecretGroups
 
 
-class ListVisible(SiteViewlet):
+class ListViewlet(SiteViewlet):
     @Lazy
     def allGroups(self):
         retval = AllGroupsOnSite(self.context)
         return retval
 
     @Lazy
+    def isSiteAdmin(self):
+        adminIds = [a.id for a in self.siteInfo.site_admins]
+        roles = self.loggedInUser.user.getRolesInContext(self.context)
+        retval = ((not self.loggedInUser.anonymous)
+                    and ((self.loggedInUser.id in adminIds)
+                        or ('manager' in roles)))
+        return retval
+
+
+class ListPublic(ListViewlet):
+    @Lazy
     def publicGroups(self):
         return PublicGroups(self.context, self.allGroups.groups)
 
+    @Lazy
+    def show(self):
+        retval = (len(self.publicGroups) > 0)
+        return retval
+
+
+class ListRestricted(ListViewlet):
     @Lazy
     def restrictedGroups(self):
         return RestrictedGroups(self.context, self.allGroups.groups)
 
     @Lazy
+    def show(self):
+        siteMbr = ((not self.loggedInUser.anonymous)
+                    and user_member_of_site(self.loggedInUser, self.context))
+        retval = siteMbr and (len(self.restrictedGroups) > 0)
+        return retval
+
+
+class ListPrivate(ListViewlet):
+    @Lazy
     def privateGroups(self):
         return PrivateGroups(self.context, self.allGroups.groups)
 
     @Lazy
-    def visiblePublic(self):
-        return (len(self.publicGroups) > 0)
-
-    @Lazy
-    def visibleRestricted(self):
-        return (len(self.restrictedGroups) > 0) \
-            and not self.loggedInUser.anonymous  # FIXME: Site member
-
-    @Lazy
-    def visiblePrivate(self):
+    def show(self):
         return (len(self.privateGroups) > 0)
 
-    @Lazy
-    def show(self):
-        retval = (self.visiblePublic or self.visibleRestricted
-                    or self.visiblePrivate)
-        return retval
 
-
-class NoListVisible(ListVisible):
-    @Lazy
-    def show(self):
-        retval = (not(self.visiblePublic and self.visiblePrivate) and
-                  self.loggedInUser.anonymous)
-        return retval
-
-
-class ListSecret(ListVisible):
-    @Lazy
-    def isSiteAdmin(self):
-        adminIds = [a.id for a in self.siteInfo.site_admins]
-        retval = ((not self.loggedInUser.anonymous)
-                    and (self.loggedInUser.id in adminIds))
-        return retval
+class ListSecret(ListViewlet):
 
     @Lazy
     def secretGroups(self):
@@ -96,4 +95,16 @@ class ListSecret(ListVisible):
         # page template for the viewlet determines *what* is seen.
         retval = ((self.isSiteAdmin and (len(self.secretGroups) > 0))
                 or ((not self.isSiteAdmin) and (len(self.memberGroups) > 0)))
+        return retval
+
+
+class NoListVisible(ListPublic, ListPrivate):
+    @Lazy
+    def show(self):
+        # We do not need to bother with restricted and secret group because
+        # both are hidden to Anonymous, so if the viewer is anon, then they
+        # must be hidden.
+        retval = (self.loggedInUser.anonymous
+                    and (len(self.publicGroups) <= 0)
+                    and (len(self.privateGroups) <= 0))
         return retval
