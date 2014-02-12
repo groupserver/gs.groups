@@ -1,14 +1,14 @@
 <div class="gs-group-list">
   <tal:block repeat="group view/groups">
     <div class="vcard" role="listitem"
-        tal:attributes="id string:gs-groups-list-${group/id}-name;
-                        title group/description"
-        data-toggle="tooltip">
+         tal:attributes="id string:gs-groups-list-${group/id}-name;
+                         title group/description"
+         data-toggle="tooltip">
       <a href="#" class="url"
          tal:attributes="href string:${group/relativeURL}/">
-         <h4 class="fn org group" tal:content="group/name">This group</h4></a>
-         <span class="gs-group-list-membership muted small" 
-               tal:condition="group/member">You are a member</span>
+      <h4 class="fn org group" tal:content="group/name">This group</h4></a>
+      <span class="gs-group-list-membership muted small"
+            tal:condition="group/member">You are a member</span>
     </div><!--listitem-->
   </tal:block>
 </div><!--gs-group-list-->
