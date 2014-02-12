@@ -12,6 +12,7 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+from __future__ import unicode_literals
 from zope.contentprovider.interfaces import IContentProvider
 from zope.interface.interface import Interface
 from zope.schema import List, Text
@@ -39,12 +40,12 @@ class IGroupList(IViewletManager):
 
 
 class IGroupListContentProvider(IContentProvider):
-    groups = List(title=u'Groups',
-                  description=u'The groups to list.',
+    groups = List(title='Groups',
+                  description='The groups to list.',
                   required=True)
     pageTemplateFileName = Text(
-        title=u"Page Template File Name",
-        description=u'The name of the ZPT file that  is used to render the '
-                    u'list.',
+        title="Page Template File Name",
+        description='The name of the ZPT file that  is used to render the '
+                    'list.',
         required=False,
-        default=u"browser/templates/groupslistcontentprovider.pt")
+        default="browser/templates/groupslistcontentprovider.pt")

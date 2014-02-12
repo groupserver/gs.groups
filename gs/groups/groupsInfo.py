@@ -12,6 +12,9 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+from __future__ import absolute_import, unicode_literals
+import logging
+log = logging.getLogger('GSGroupsInfo')
 import time
 from zope.app.folder.interfaces import IFolder
 from zope.cachedescriptors.property import Lazy
@@ -22,17 +25,13 @@ import AccessControl
 from Products.GSGroup.queries import GroupQuery
 from Products.XWFCore.cache import LRUCache
 from Products.GSContent.interfaces import IGSSiteInfo
-from gs.groups.interfaces import IGSGroupsInfo
-
-import logging
-log = logging.getLogger('GSGroupsInfo')
+from .interfaces import IGSGroupsInfo
 
 
 class GSGroupsInfoFactory(object):
     implements(IFactory)
-
-    title = u'GroupServer Groups Info Factory'
-    descripton = u'Create a new GroupServer groups information instance'
+    title = 'GroupServer Groups Info Factory'
+    descripton = 'Create a new GroupServer groups information instance'
 
     def __call__(self, context):
         retval = GSGroupsInfo(context)
@@ -168,7 +167,7 @@ class GSGroupsInfo(object):
         return [g for g in gIds if (g in visibleGroupIds)]
 
     def clear_groups_cache(self):
-        m = u'Clearing visible-groups cache for %s (%s)' %\
+        m = 'Clearing visible-groups cache for %s (%s)' %\
           (self.siteInfo.name, self.siteInfo.id)
         log.info(m)
         self.siteUserVisibleGroupsIds.clear()

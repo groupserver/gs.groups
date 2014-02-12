@@ -12,6 +12,7 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+from __future__ import unicode_literals
 from Products.Five import BrowserView
 from zope.component import createObject
 from zope.cachedescriptors.property import Lazy
