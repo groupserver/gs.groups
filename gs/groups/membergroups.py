@@ -30,6 +30,8 @@ class MemberGroups(object):
         retval = createObject('groupserver.LoggedInUser', self.context)
         return retval
 
+#FIXME: Deal with ""manager: looking at the groups.
+
 
 class PublicGroups(MemberGroups):
     # --=mpj17=-- should this be moved to gs.group.member.base?
