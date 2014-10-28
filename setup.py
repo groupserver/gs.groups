@@ -62,6 +62,7 @@ setup(
         'zope.cachedescriptors',
         'zope.component',
         'zope.contentprovider',
+        'zope.i18n',
         'zope.interface',
         'zope.schema',
         'zope.tal',

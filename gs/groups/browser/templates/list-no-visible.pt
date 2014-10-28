@@ -1,6 +1,10 @@
-<div id="gs-groups-list-no-visible" role="region"
+<div xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     i18n:domain="gs.groups"
+     id="gs-groups-list-no-visible" role="region"
      aria-labelledby="gs-groups-list-no-visible-h">
-  <h3 id="gs-groups-list-no-visible-h">Membership</h3>
+  <h3 id="gs-groups-list-no-visible-h"
+      i18n:translate="">Membership</h3>
   <p>
     You must be a signed-in member of this site to participate.
   </p>

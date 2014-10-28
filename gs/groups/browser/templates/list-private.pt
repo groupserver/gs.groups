@@ -1,7 +1,11 @@
 <div id="gs-groups-list-private"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     i18n:domain="gs.groups"
      aria-labelledby="gs-groups-list-private-h"
      role="list">
-  <h2 id="gs-groups-list-private-h">Private groups</h2>
+  <h2 id="gs-groups-list-private-h"
+      i18n:translate="">Private groups</h2>
   <tal:block
     define="groups view/privateGroups"
     replace="structure provider:groupserver.GroupListContent">

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##############################################################################
+############################################################################
 #
 # Copyright © 2013, 2014 OnlineGroups.net and Contributors.
 # All Rights Reserved.
@@ -11,12 +11,13 @@
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
 # FOR A PARTICULAR PURPOSE.
 #
-##############################################################################
-from __future__ import unicode_literals
+############################################################################
+from __future__ import absolute_import, unicode_literals
 from zope.contentprovider.interfaces import IContentProvider
 from zope.interface.interface import Interface
 from zope.schema import List, Text
 from zope.viewlet.interfaces import IViewletManager
+from . import GSMessageFactory as _
 
 
 class IGSGroupsInfo(Interface):
@@ -40,7 +41,7 @@ class IGroupList(IViewletManager):
 
 
 class IGroupListContentProvider(IContentProvider):
-    groups = List(title='Groups',
+    groups = List(title=_('Groups'),
                   description='The groups to list.',
                   required=True)
     pageTemplateFileName = Text(

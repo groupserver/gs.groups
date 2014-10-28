@@ -1,7 +1,11 @@
 <div id="gs-groups-list-public"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     i18n:domain="gs.groups"
      aria-labelledby="gs-groups-list-public-h"
      role="list">
-  <h2 id="gs-groups-list-public-h">Public groups</h2>
+  <h2 id="gs-groups-list-public-h"
+      i18n:translate="">Public groups</h2>
   <tal:block
     define="groups view/publicGroups"
     replace="structure provider:groupserver.GroupListContent">

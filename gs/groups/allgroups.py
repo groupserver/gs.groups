@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##############################################################################
+############################################################################
 #
 # Copyright © 2013, 2014 OnlineGroups.net and Contributors.
 # All Rights Reserved.
@@ -11,7 +11,7 @@
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
 # FOR A PARTICULAR PURPOSE.
 #
-##############################################################################
+############################################################################
 from __future__ import unicode_literals
 from zope.cachedescriptors.property import Lazy
 from zope.component import createObject
@@ -38,8 +38,9 @@ class AllGroupsOnSite(object):
     @Lazy
     def groupsFolder(self):
         retval = getattr(self.siteInfo.siteObj, 'groups', None)
-        assert retval, 'Cannot find "groups" folder in %s' % \
-            self.siteInfo.siteObj
+        if not retval:
+            m = 'Cannot find "groups" folder in %s' % self.siteInfo.siteObj
+            raise ValueError(m)
         return retval
 
     def get_all_groups(self):

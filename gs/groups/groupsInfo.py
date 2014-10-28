@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##############################################################################
+############################################################################
 #
 # Copyright © 2013, 2014 OnlineGroups.net and Contributors.
 # All Rights Reserved.
@@ -11,7 +11,7 @@
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
 # FOR A PARTICULAR PURPOSE.
 #
-##############################################################################
+############################################################################
 from __future__ import absolute_import, unicode_literals
 import logging
 log = logging.getLogger('GSGroupsInfo')
@@ -70,16 +70,16 @@ class GSGroupsInfo(object):
     def groupsObj(self):
         assert self.siteInfo, 'Site Info is set to %s' % self.siteInfo
         assert self.siteInfo.siteObj, \
-          'Site Object is %s' % self.siteInfo.siteObj
+            'Site Object is %s' % self.siteInfo.siteObj
 
         assert hasattr(self.siteInfo.siteObj, 'groups'), \
-          'Site "%s" has not "groups" instance within "Content"' % \
-          self.siteInfo.get_name()
+            'Site "%s" has not "groups" instance within "Content"' % \
+            self.siteInfo.get_name()
         groupsObj = getattr(self.siteInfo.siteObj, 'groups')
 
         assert groupsObj.getProperty('is_groups', False), \
-          'Groups instance for "%s" exists, but the "is_groups" property '\
-          'is not True' % self.siteInfo.get_name()
+            'Groups instance for "%s" exists, but the "is_groups" '\
+            'property is not True' % self.siteInfo.get_name()
 
         assert groupsObj
         return groupsObj
@@ -140,9 +140,10 @@ class GSGroupsInfo(object):
         visibleGroups = []
         for group in allGroups:
             # AM: "Visible groups" should really be: groups which a user
-            #   is a member of, public groups, and private groups. Therefore,
-            #   we should only be checking the visibility of the group, not
-            #   of the messages.
+            #   is a member of, public groups, and private groups.
+            #   Therefore, we should only be checking the visibility of the
+            #   group, not of the messages.
+            #
             #   A separate method ("visible messages" or similar) should be
             #   used to determine what messages and files should be included
             #   in search results (and in turn, latest topics and files on a
@@ -151,9 +152,9 @@ class GSGroupsInfo(object):
             #   distinction. Therefore, to preserve security, we define
             #   "visible groups" very restrictively.
             if (hasattr(group, 'messages')
-              and securityManager.checkPermission('View', group)
-              and securityManager.checkPermission('View',
-                                                  group.aq_explicit.messages)):
+                and securityManager.checkPermission('View', group)
+                and securityManager.checkPermission(
+                    'View', group.aq_explicit.messages)):
                 visibleGroups.append(group)
         assert type(visibleGroups) == list
         return visibleGroups
@@ -168,7 +169,7 @@ class GSGroupsInfo(object):
 
     def clear_groups_cache(self):
         m = 'Clearing visible-groups cache for %s (%s)' %\
-          (self.siteInfo.name, self.siteInfo.id)
+            (self.siteInfo.name, self.siteInfo.id)
         log.info(m)
         self.siteUserVisibleGroupsIds.clear()
 
@@ -228,7 +229,8 @@ class GSGroupsInfo(object):
         if (authUsr and (user.getId() == authUsr.getId())):
             retval = self.__get_member_groups_for_user(user)
         else:
-            retval = self.__get_visible_member_groups_for_user(user, authUsr)
+            retval = self.__get_visible_member_groups_for_user(user,
+                                                               authUsr)
         assert type(retval) == list
         return retval
 
@@ -287,7 +289,7 @@ class GSGroupsInfo(object):
                     retval.append(g)
             else:
                 authors = [ar['user_id'] for ar in
-                            q.authors_posts_in_group(sId, g.getId())]
+                           q.authors_posts_in_group(sId, g.getId())]
                 if (uId in authors):
                     retval.append(g)
         assert type(retval) == list

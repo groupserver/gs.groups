@@ -1,0 +1,44 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-10-28 23:24+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ./interfaces.py:44
+msgid "Groups"
+msgstr ""
+
+#: ./browser/templates/list-no-visible.pt:6
+msgid "Membership"
+msgstr ""
+
+#: ./browser/templates/list-private.pt:7
+msgid "Private groups"
+msgstr ""
+
+#: ./browser/templates/list-public.pt:7
+msgid "Public groups"
+msgstr ""
+
+#: ./browser/templates/list-restricted.pt:7
+msgid "Restricted groups"
+msgstr ""
+
+#: ./browser/templates/list-secret.pt:5
+msgid "Secret groups"
+msgstr ""
+
+#: ./browser/templates/groupslistcontentprovider.pt:13
+msgid "You are a member"
+msgstr ""
+

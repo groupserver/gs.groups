@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##############################################################################
+############################################################################
 #
 # Copyright © 2014 OnlineGroups.net and Contributors.
 # All Rights Reserved.
@@ -11,7 +11,7 @@
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
 # FOR A PARTICULAR PURPOSE.
 #
-##############################################################################
+############################################################################
 from __future__ import absolute_import, unicode_literals
 from zope.cachedescriptors.property import Lazy
 from gs.group.member.base import user_member_of_site
@@ -32,8 +32,8 @@ class ListViewlet(SiteViewlet):
         adminIds = [a.id for a in self.siteInfo.site_admins]
         roles = self.loggedInUser.user.getRolesInContext(self.context)
         retval = ((not self.loggedInUser.anonymous)
-                    and ((self.loggedInUser.id in adminIds)
-                        or ('manager' in roles)))
+                  and ((self.loggedInUser.id in adminIds)
+                       or ('manager' in roles)))
         return retval
 
 
@@ -56,7 +56,7 @@ class ListRestricted(ListViewlet):
     @Lazy
     def show(self):
         siteMbr = ((not self.loggedInUser.anonymous)
-                    and user_member_of_site(self.loggedInUser, self.context))
+                   and user_member_of_site(self.loggedInUser, self.context))
         retval = siteMbr and (len(self.restrictedGroups) > 0)
         return retval
 
@@ -85,16 +85,17 @@ class ListSecret(ListViewlet):
     @Lazy
     def show(self):
         # --=mpj17=-- Bare with me, this is a little tricky.
-        # The *site* administrator should see all the secret groups, so he or
-        #     she can administer them
+        # The *site* administrator should see all the secret groups, so he
+        #     or she can administer them
         # A *member* of a secret group should see the group, but only that
         #     group.
         # The list of secret groups should be hidden from everyone else.
         #
-        # This property determines if the list should be seen *at* *all*. The
-        # page template for the viewlet determines *what* is seen.
+        # This property determines if the list should be seen *at* *all*.
+        # The page template for the viewlet determines *what* is seen.
         retval = ((self.isSiteAdmin and (len(self.secretGroups) > 0))
-                or ((not self.isSiteAdmin) and (len(self.memberGroups) > 0)))
+                  or ((not self.isSiteAdmin)
+                      and (len(self.memberGroups) > 0)))
         return retval
 
 
@@ -105,6 +106,6 @@ class NoListVisible(ListPublic, ListPrivate):
         # both are hidden to Anonymous, so if the viewer is anon, then they
         # must be hidden.
         retval = (self.loggedInUser.anonymous
-                    and (len(self.publicGroups) <= 0)
-                    and (len(self.privateGroups) <= 0))
+                  and (len(self.publicGroups) <= 0)
+                  and (len(self.privateGroups) <= 0))
         return retval
