@@ -17,50 +17,50 @@ msgstr ""
 #. Default: "You are a member"
 #: ./browser/templates/groupslistcontentprovider.pt:13
 msgid "group-member"
-msgstr "You are a member"
+msgstr ""
 
 #. Default: "The groups to list."
 #: ./interfaces.py:45
 msgid "groups-list-description"
-msgstr "The groups to list."
+msgstr ""
 
 #. Default: "Groups"
 #: ./interfaces.py:44
 msgid "groups-list-label"
-msgstr "Groups"
+msgstr ""
 
 #. Default: "Membership"
 #: ./browser/templates/list-no-visible.pt:6
 msgid "membership"
-msgstr "Membership"
+msgstr ""
 
 #. Default: "Private groups"
 #: ./browser/templates/list-private.pt:7
 msgid "private-groups"
-msgstr "Private groups"
+msgstr ""
 
 #. Default: "Public groups"
 #: ./browser/templates/list-public.pt:7
 msgid "public-groups"
-msgstr "Public groups"
+msgstr ""
 
 #. Default: "Restricted groups"
 #: ./browser/templates/list-restricted.pt:7
 msgid "restricted-groups"
-msgstr "Restricted groups"
+msgstr ""
 
 #. Default: "Secret groups"
 #: ./browser/templates/list-secret.pt:5
 msgid "secret-groups"
-msgstr "Secret groups"
+msgstr ""
 
 #. Default: "Sign in"
 #: ./browser/templates/list-no-visible.pt:12
 msgid "sign-in-link"
-msgstr "Sign in"
+msgstr ""
 
 #. Default: "You must be a signed-in member of this site to participate."
 #: ./browser/templates/list-no-visible.pt:8
 msgid "sign-in-required"
-msgstr "You must be a signed-in member of this site to participate."
+msgstr ""
 
