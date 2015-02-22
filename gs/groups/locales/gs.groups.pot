@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-10-28 23:24+0000\n"
+"POT-Creation-Date: 2015-02-22 18:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,31 +17,53 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: gs.groups\n"
 
-#: ./interfaces.py:44
-msgid "Groups"
-msgstr ""
-
-#: ./browser/templates/list-no-visible.pt:6
-msgid "Membership"
-msgstr ""
-
-#: ./browser/templates/list-private.pt:7
-msgid "Private groups"
-msgstr ""
-
-#: ./browser/templates/list-public.pt:7
-msgid "Public groups"
-msgstr ""
-
-#: ./browser/templates/list-restricted.pt:7
-msgid "Restricted groups"
-msgstr ""
-
-#: ./browser/templates/list-secret.pt:5
-msgid "Secret groups"
-msgstr ""
-
+#. Default: "You are a member"
 #: ./browser/templates/groupslistcontentprovider.pt:13
-msgid "You are a member"
+msgid "group-member"
+msgstr ""
+
+#. Default: "The groups to list."
+#: ./interfaces.py:45
+msgid "groups-list-description"
+msgstr ""
+
+#. Default: "Groups"
+#: ./interfaces.py:44
+msgid "groups-list-label"
+msgstr ""
+
+#. Default: "Membership"
+#: ./browser/templates/list-no-visible.pt:6
+msgid "membership"
+msgstr ""
+
+#. Default: "Private groups"
+#: ./browser/templates/list-private.pt:7
+msgid "private-groups"
+msgstr ""
+
+#. Default: "Public groups"
+#: ./browser/templates/list-public.pt:7
+msgid "public-groups"
+msgstr ""
+
+#. Default: "Restricted groups"
+#: ./browser/templates/list-restricted.pt:7
+msgid "restricted-groups"
+msgstr ""
+
+#. Default: "Secret groups"
+#: ./browser/templates/list-secret.pt:5
+msgid "secret-groups"
+msgstr ""
+
+#. Default: "Sign in"
+#: ./browser/templates/list-no-visible.pt:12
+msgid "sign-in-link"
+msgstr ""
+
+#. Default: "You must be a signed-in member of this site to participate."
+#: ./browser/templates/list-no-visible.pt:8
+msgid "sign-in-required"
 msgstr ""
 

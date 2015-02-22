@@ -5,7 +5,7 @@
      aria-labelledby="gs-groups-list-private-h"
      role="list">
   <h2 id="gs-groups-list-private-h"
-      i18n:translate="">Private groups</h2>
+      i18n:translate="private-groups">Private groups</h2>
   <tal:block
     define="groups view/privateGroups"
     replace="structure provider:groupserver.GroupListContent">

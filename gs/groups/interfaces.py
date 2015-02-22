@@ -41,8 +41,9 @@ class IGroupList(IViewletManager):
 
 
 class IGroupListContentProvider(IContentProvider):
-    groups = List(title=_('Groups'),
-                  description='The groups to list.',
+    groups = List(title=_('groups-list-label', 'Groups'),
+                  description=_('groups-list-description', 
+                      'The groups to list.'),
                   required=True)
     pageTemplateFileName = Text(
         title="Page Template File Name",

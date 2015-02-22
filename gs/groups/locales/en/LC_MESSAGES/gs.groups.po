@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-10-28 23:24+0000\n"
+"POT-Creation-Date: 2015-02-22 18:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,31 +14,53 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ./interfaces.py:44
-msgid "Groups"
-msgstr ""
-
-#: ./browser/templates/list-no-visible.pt:6
-msgid "Membership"
-msgstr ""
-
-#: ./browser/templates/list-private.pt:7
-msgid "Private groups"
-msgstr ""
-
-#: ./browser/templates/list-public.pt:7
-msgid "Public groups"
-msgstr ""
-
-#: ./browser/templates/list-restricted.pt:7
-msgid "Restricted groups"
-msgstr ""
-
-#: ./browser/templates/list-secret.pt:5
-msgid "Secret groups"
-msgstr ""
-
+#. Default: "You are a member"
 #: ./browser/templates/groupslistcontentprovider.pt:13
-msgid "You are a member"
-msgstr ""
+msgid "group-member"
+msgstr "You are a member"
+
+#. Default: "The groups to list."
+#: ./interfaces.py:45
+msgid "groups-list-description"
+msgstr "The groups to list."
+
+#. Default: "Groups"
+#: ./interfaces.py:44
+msgid "groups-list-label"
+msgstr "Groups"
+
+#. Default: "Membership"
+#: ./browser/templates/list-no-visible.pt:6
+msgid "membership"
+msgstr "Membership"
+
+#. Default: "Private groups"
+#: ./browser/templates/list-private.pt:7
+msgid "private-groups"
+msgstr "Private groups"
+
+#. Default: "Public groups"
+#: ./browser/templates/list-public.pt:7
+msgid "public-groups"
+msgstr "Public groups"
+
+#. Default: "Restricted groups"
+#: ./browser/templates/list-restricted.pt:7
+msgid "restricted-groups"
+msgstr "Restricted groups"
+
+#. Default: "Secret groups"
+#: ./browser/templates/list-secret.pt:5
+msgid "secret-groups"
+msgstr "Secret groups"
+
+#. Default: "Sign in"
+#: ./browser/templates/list-no-visible.pt:12
+msgid "sign-in-link"
+msgstr "Sign in"
+
+#. Default: "You must be a signed-in member of this site to participate."
+#: ./browser/templates/list-no-visible.pt:8
+msgid "sign-in-required"
+msgstr "You must be a signed-in member of this site to participate."
 

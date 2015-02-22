@@ -12,7 +12,7 @@
       <h4 class="fn org group" tal:content="group/name">This group</h4></a>
       <span class="gs-group-list-membership muted small"
             tal:condition="group/member"
-            i18n:translate="">You are a member</span>
+            i18n:translate="group-member">You are a member</span>
     </div><!--listitem-->
   </tal:block>
 </div><!--gs-group-list-->

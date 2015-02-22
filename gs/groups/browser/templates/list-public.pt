@@ -5,7 +5,7 @@
      aria-labelledby="gs-groups-list-public-h"
      role="list">
   <h2 id="gs-groups-list-public-h"
-      i18n:translate="">Public groups</h2>
+      i18n:translate="public-groups">Public groups</h2>
   <tal:block
     define="groups view/publicGroups"
     replace="structure provider:groupserver.GroupListContent">
