@@ -1,6 +1,16 @@
 Changelog
 =========
 
+4.1.1 (2015-02-26)
+------------------
+
+* Transifex_ support
+* Added German (thanks Alice_)
+* Added French
+
+.. _Transifex: https://www.transifex.com/projects/p/gs-groups/
+.. _Alice: http://groupserver.org/p/alice
+
 4.1.0 (2014-10-27)
 ------------------
 
@@ -92,3 +102,5 @@ Changelog
 ------------------
 
 * Created new product for the groups area of a site
+
+..  LocalWords:  Changelog Transifex
