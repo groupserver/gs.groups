@@ -4,11 +4,12 @@
 # Alice Rose <heldinz@posteo.de>, 2014-2015
 # Michael JasonSmith <mpj17@onlinegroups.net>, 2014-2015
 # Mohamed-Younès BOUMEDIENE <m-boumediene@live.fr>, 2015
+# Razique Mahroua <razique.mahroua@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: gs.groups\n"
 "POT-Creation-Date: 2015-02-22 18:49+0000\n"
-"PO-Revision-Date: 2015-02-27 00:58+0000\n"
+"PO-Revision-Date: 2015-03-12 00:35+0000\n"
 "Last-Translator: Michael JasonSmith <mpj17@onlinegroups.net>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/gs-groups/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +30,7 @@ msgstr "Vous êtes un membre"
 #. Default: "The groups to list."
 #: ./interfaces.py:45
 msgid "groups-list-description"
-msgstr ""
+msgstr "Les groupes à afficher."
 
 #. Default: "Groups"
 #: ./interfaces.py:44
@@ -44,7 +45,7 @@ msgstr "Affiliation"
 #. Default: "Private groups"
 #: ./browser/templates/list-private.pt:7
 msgid "private-groups"
-msgstr "Les groupes privé"
+msgstr "Groupes privés"
 
 #. Default: "Public groups"
 #: ./browser/templates/list-public.pt:7
@@ -54,12 +55,12 @@ msgstr "Groupes publics"
 #. Default: "Restricted groups"
 #: ./browser/templates/list-restricted.pt:7
 msgid "restricted-groups"
-msgstr "Les groupes qui ne sont pas public, privé, ou secret"
+msgstr "Les groupes qui ne sont ni public, ni privé, ou secret"
 
 #. Default: "Secret groups"
 #: ./browser/templates/list-secret.pt:5
 msgid "secret-groups"
-msgstr "Les groupes secret"
+msgstr "Groupes secrets"
 
 #. Default: "Sign in"
 #: ./browser/templates/list-no-visible.pt:12
@@ -69,4 +70,4 @@ msgstr "Connexion"
 #. Default: "You must be a signed-in member of this site to participate."
 #: ./browser/templates/list-no-visible.pt:8
 msgid "sign-in-required"
-msgstr ""
+msgstr "Vous devez être un membre enregistré afin de pouvoir participer."
