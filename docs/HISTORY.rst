@@ -1,12 +1,18 @@
 Changelog
 =========
 
+* [FR] Updating the French translation, thanks to `Razique
+  Mahroua`_
+
+.. _Razique Mahroua:
+   https://www.transifex.com/accounts/profile/Razique/
+
 4.1.1 (2015-02-26)
 ------------------
 
 * Transifex_ support
-* Added German (thanks Alice_)
-* Added French
+* [DE] Added German (thanks Alice_)
+* [FR] Added French
 
 .. _Transifex: https://www.transifex.com/projects/p/gs-groups/
 .. _Alice: http://groupserver.org/p/alice
