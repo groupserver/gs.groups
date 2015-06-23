@@ -1,5 +1,0 @@
-<div id="gs-groups-list"
-     xmlns:tal="http://xml.zope.org/namespaces/tal"
-     tal:content="structure provider:groupserver.GroupsList">
-  The list of groups on this site.
-</div><!--gs-groups-list-->
