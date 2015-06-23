@@ -16,41 +16,13 @@ The list of groups on a site
 Introduction
 ============
 
-This product is concerned with the "groups" area of a site: the
-collection of all the groups.
-
-Lists
-=====
-
-The lists are viewlets, which appear in the
-``gs.groups.interfaces.IGroupList`` manager. This manager, in
-turn, appears in the main column of the site homepage (in the
-manager ``gs.site.home.interfaces.ISiteHomeMain``).
-
-This product provides three group-list viewlets:
-
-* The visible groups include the public and private groups, each
-  separated out into a different list.
-
-* If there are no visible groups, and the person is logged out
-  then advice is given to login.
-
-* Finally, the list of secret groups is shown. The list is shown
-  to
-
-  + The site administrators, who see **all** the secret groups,
-    and
-  + The members of the secret groups, who see **just** the secret
-    groups that they are members of.
-
-The ``groupserver.GroupListContent`` content provider displays
-the actual list of groups.
+This product is concerned with the core code for lists of
+*groups*.
 
 Resources
 =========
 
 - Code repository: https://github.com/groupserver/gs.groups
-- Translations: https://www.transifex.com/projects/p/gs-groups/
 - Questions and comments to
   http://groupserver.org/groups/development
 - Report bugs at https://redmine.iopen.net/projects/groupserver

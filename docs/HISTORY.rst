@@ -1,6 +1,18 @@
 Changelog
 =========
 
+5.0.0 (2015-06-23)
+------------------
+
+* Moving the list of groups on the site homepage to
+  `gs.group.groups.list`_
+
+.. _gs.group.groups.list:
+   https://github.com/groupserver/gs.group.groups.list
+
+4.1.2 (2015-03-11)
+------------------
+
 * [FR] Updating the French translation, thanks to `Razique
   Mahroua`_
 
