@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
+from .allgroups import AllGroupsOnSite
 from AccessControl import ModuleSecurityInfo
 from AccessControl import allow_class
 groupsInfo_security = ModuleSecurityInfo('gs.groups.groupsInfo')
