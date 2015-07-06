@@ -30,23 +30,23 @@ with codecs.open(os.path.join("docs", "HISTORY.rst"),
     long_description += '\n' + f.read()
 
 requires = [
-        'zope.app.folder',
-        'zope.browserpage',  # For the browser:page ZCML
-        'zope.cachedescriptors',
-        'zope.component',
-        'zope.interface',
-        'AccessControl',
-        'Zope2',
-        'gs.content.base',
-        'gs.group.base',
-        'gs.group.member.base',
-        'gs.group.privacy',
-        'gs.site.home',  # For the viewlet manager
-        'gs.viewlet',
-        'Products.GSContent',
-        'Products.GSGroup',
-        'Products.XWFCore',
-    ]
+    'zope.app.folder',
+    'zope.browserpage',  # For the browser:page ZCML
+    'zope.cachedescriptors',
+    'zope.component',
+    'zope.interface',
+    'AccessControl',
+    'Zope2',
+    'gs.content.base',
+    'gs.group.base',
+    'gs.group.member.base',
+    'gs.group.privacy',
+    'gs.site.home',  # For the viewlet manager
+    'gs.viewlet',
+    'Products.GSContent',
+    'Products.GSGroup',
+    'Products.XWFCore', ]
+
 if (sys.version_info < (3, 4)):
     requires += ['setuptools', ]
 
