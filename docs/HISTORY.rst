@@ -1,6 +1,17 @@
 Changelog
 =========
 
+5.1.1 (2016-04-11)
+------------------
+
+* Adding unit tests
+* Updating the Python code to Python 2.7
+
+5.1.0 (2015-09-09)
+------------------
+
+* [DE] Updating the German localisation
+
 5.0.0 (2015-06-23)
 ------------------
 
