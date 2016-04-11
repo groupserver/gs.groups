@@ -61,7 +61,7 @@ class AllGroupsOnSite(object):
 
     @Lazy
     def groupDict(self):
-        retval = dict([(g.id, g) for g in self.groups])
+        retval = {g.id: g for g in self.groups}
         return retval
 
     def __len__(self):
@@ -84,14 +84,14 @@ class AllGroupsOnSiteVocab(AllGroupsOnSite):
     implements(IVocabulary, IVocabularyTokenized)
     __used_for__ = IEnumerableMapping
 
-    def make_term(self, groupInfo):
+    @staticmethod
+    def make_term(groupInfo):
         retval = SimpleTerm(groupInfo.id, groupInfo.id, groupInfo.name)
         return retval
 
     def __iter__(self):
-        r = [self.make_term(g) for g in self.groups]
-        retval = iter(r)
-        return retval
+        for g in self.groups:
+            yield self.make_term(g)
 
     def __contains__(self, groupId):
         assert groupId, 'No groupId given'
@@ -100,7 +100,7 @@ class AllGroupsOnSiteVocab(AllGroupsOnSite):
 
     @Lazy
     def termDict(self):
-        retval = dict([(g.id, self.make_term(g)) for g in self.groups])
+        retval = {g.id: self.make_term(g) for g in self.groups}
         return retval
 
     def __getitem__(self, key):
